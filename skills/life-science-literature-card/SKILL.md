@@ -30,6 +30,8 @@ Read enough of the extracted paper, captions, methods, and discussion to support
 
 Generate a paper-specific PNG graphical abstract with an available image-generation tool, based only on evidence in the paper. Use `scripts/build_logic_map_svg.py` for a compact 4�C6-step SVG logic map and collapsed step notes for detail. Keep both visuals in the staged `ͼƬ��Դ/literature_cards` folder, or the user's chosen asset folder. Update every frontmatter link and body embed to match the chosen folder exactly. Keep the note in the staged note folder and MinerU output in a staged `sources/mineru/<zotero_key>` folder.
 
+When the user asks for a literature card wall, read `references/card-wall-setup.md` and use the bundled `assets/card-wall/` files. Installing cards alone does not create the Obsidian Bases gallery.
+
 ## Quality and installation
 
 Before installation, verify UTF-8 text, SVG XML, PNG dimensions and visual preview, exact vault-relative wikilinks, and readable MinerU Markdown with its images. Use the bundled installer; it refuses existing targets and supports a dry run:

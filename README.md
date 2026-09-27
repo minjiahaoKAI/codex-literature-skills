@@ -5,7 +5,7 @@
 - `life-science-literature-card`���� Zotero PDF �� MinerU ȫ����ȡ���ɳ�����Ƭ��ͼ��ժҪ���߼�ͼ��
 - `life-science-reading-session`��Χ�� PDF��Zotero ���������п�Ƭ���о����ʴ𣬲����û�Ҫ��ʱ���ϱʼǡ�
 
-���� skill ������ Zotero ���ݡ�Obsidian Vault��MinerU CLI��API token �����߱������á�Ĭ���� Vault ��ʹ�� `���ױʼ�`��`ͼƬ��Դ/literature_cards` �� `sources/mineru`�����ڰ�װ��Ƭʱѡ���������Ŀ¼��CSS snippet �Ϳ�Ƭǽ��ͼ�ǿ�ѡ�ģ�δ�����ڱ��ֿ⡣
+���� skill ������ Zotero ���ݡ�Obsidian Vault��MinerU CLI��API token �����߱������á�Ĭ���� Vault ��ʹ�� `���ױʼ�`��`ͼƬ��Դ/literature_cards` �� `sources/mineru`�����ڰ�װ��Ƭʱѡ���������Ŀ¼����ѡ�� Obsidian Bases ��Ƭǽ��ͼ�� CSS snippet λ�� `skills/life-science-literature-card/assets/card-wall/`��
 
 ## �� Windows �ϰ�װ skill
 
@@ -23,6 +23,14 @@
 2. ���� Codex ���Լ��� Obsidian Vault ����·�������ڱ������� `OBSIDIAN_VAULT_PATH` ������������Ҫ����ʵ·���ύ�� GitHub��
 3. ��װ MinerU Open API CLI���������Լ����˺������� token����һ�ڣ���
 4. ���ϣ���Զ���ȡ Zotero ������������װ [Obsidian Vault MCP](https://github.com/luffysolution-svg/obsidian-vault-mcp)�����ǿ�ѡ���������ж����ıʼǲ��ֺ�д�����̡���ȷ������Ŀ��Ŀ¼������ Codex ʹ������д�빦�ܡ�
+
+## �������׿�Ƭǽ����ѡ��
+
+���׿�Ƭǽʹ�� Obsidian ���õ� **Bases** ��Ƭ��ͼ���� Notebook Navigator �����ļ���Ƭ�б���ͬ���� Codex ��ȡ [��Ƭǽ��װ˵��](skills/life-science-literature-card/references/card-wall-setup.md)�������� `Literature_Card_Wall` �ļ��������Լ������ױʼ�Ŀ¼���� CSS snippet �������Լ��� `.obsidian/snippets/`��Ȼ���� Obsidian �ġ����� �� ��� �� CSS ����Ƭ�Ρ�������������Ҫ�������� `.obsidian` ����Ŀ¼�����ʵ�����ױʼǡ�
+
+����ֱ�Ӷ����� Codex ˵��
+
+> ������Ҵ� `https://github.com/minjiahaoKAI/codex-literature-skills` ��װ�� `life-science-literature-card` skill�����������е� `references/card-wall-setup.md`���òֿ⸽�������� `assets/card-wall/` �ļ������ҵ� Obsidian Vault ���������׿�Ƭǽ����ȷ���ҵ� Vault ·���� Bases �����ã���Ŀ���ļ��Ѵ��ڣ��ȱȽϲ�����ԭ�ļ�����װ��� `Literature_Card_Wall.base`��������п�Ƭ�ķ��桢ժҪ����ת��
 
 ## ���� Codex ��װ MinerU
 

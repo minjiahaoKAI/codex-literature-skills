@@ -1,0 +1,32 @@
+/* Only affects the Literature_Card_Wall tab. */
+.workspace-tabs:has(.workspace-tab-header[aria-label="Literature_Card_Wall"]) .bases-cards-group .bases-cards-property[data-property="note.card_summary"] .bases-cards-label {
+  display: none !important;
+}
+
+.workspace-tabs:has(.workspace-tab-header[aria-label="Literature_Card_Wall"]) .bases-cards-group .bases-cards-property[data-property="note.card_summary"] {
+  transform: translateY(calc(-0.5 * var(--bases-cards-line-height)));
+  height: auto !important;
+}
+
+.workspace-tabs:has(.workspace-tab-header[aria-label="Literature_Card_Wall"]) .bases-cards-group .bases-cards-property[data-property="note.card_summary"] .bases-cards-line,
+.workspace-tabs:has(.workspace-tab-header[aria-label="Literature_Card_Wall"]) .bases-cards-group .bases-cards-property[data-property="note.card_summary"] .bases-rendered-value {
+  height: auto !important;
+  min-height: 0 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  line-height: 1.45 !important;
+}
+
+.workspace-tabs:has(.workspace-tab-header[aria-label="Literature_Card_Wall"]) .bases-cards-group .bases-cards-property[data-property="note.card_summary"] .bases-rendered-value {
+  display: block !important;
+}
+
+/* The file name is the visible card title; avoid showing the same title twice. */
+.workspace-tabs:has(.workspace-tab-header[aria-label="Literature_Card_Wall"]) .bases-cards-group .bases-cards-property[data-property="note.title"],
+.workspace-tabs:has(.workspace-tab-header[aria-label="Literature_Card_Wall"]) .bases-cards-group .bases-cards-property[data-property="note.priority"],
+.workspace-tabs:has(.workspace-tab-header[aria-label="Literature_Card_Wall"]) .bases-cards-group .bases-cards-property[data-property="note.tags"] {
+  display: none !important;
+}

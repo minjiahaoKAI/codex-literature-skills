@@ -1,0 +1,34 @@
+cssclasses:
+  - literature-card-wall
+filters:
+  and:
+    - note_type == "literature-card"
+properties:
+  card_summary:
+    displayName: Summary
+  year:
+    displayName: Year
+  journal:
+    displayName: Journal
+  doi:
+    displayName: DOI
+  tags:
+    displayName: Tags
+views:
+  - type: cards
+    name: Literature Cards
+    order:
+      - file.name
+      - card_summary
+      - title
+      - year
+      - journal
+      - doi
+      - priority
+    sort:
+      - property: file.mtime
+        direction: DESC
+    image: note.card_cover
+    cardSize: 400
+    imageAspectRatio: 0.6
+    imageFit: contain
