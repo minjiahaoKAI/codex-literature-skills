@@ -1,0 +1,4 @@
+interface:
+  display_name: "Life Science Reading Session"
+  short_description: "Deep reading and note integration."
+  default_prompt: "Start or integrate a deep reading session for an Obsidian literature card and its Zotero paper."

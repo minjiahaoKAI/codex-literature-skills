@@ -1,0 +1,13 @@
+.mineru/
+.env
+.env.*
+config.local.*
+*.pdf
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.zip
+__pycache__/
+*.pyc
+work/
+outputs/

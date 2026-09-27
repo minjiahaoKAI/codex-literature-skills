@@ -1,0 +1,4 @@
+interface:
+  display_name: "Life Science Literature Card"
+  short_description: "Generate Obsidian literature cards from Zotero papers."
+  default_prompt: "Generate an Obsidian literature card for the provided paper title, DOI, Zotero item, or PDF."
