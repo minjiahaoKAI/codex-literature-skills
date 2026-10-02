@@ -9,7 +9,7 @@ Use the current user's sources and configuration. A title, DOI, Zotero key, PDF 
 
 ## Resolve the paper
 
-1. Find the existing Obsidian card by title, DOI, or Zotero key. Search the user's vault, including their chosen notes folder; `���ױʼ�` is the default used by the companion card skill.
+1. Find the existing Obsidian card by title, DOI, or Zotero key. Search the user's vault, including their chosen notes folder; `文献笔记` is the default used by the companion card skill.
 2. Resolve the Zotero item, PDF, and annotations through an available Zotero integration or local API. Read the card and its `mineru_source` link if present. If a source is absent, say which one; do not invent paper details from web summaries. Ask before switching to a web-only discussion.
 3. An installed `obsidian-vault-mcp` may help with lookup and annotation retrieval. It is optional. Its own note layout and write tools may differ from this card's schema; do not let it import or rewrite this card automatically. Use its write tools only after checking the exact proposed target and the user's authorization.
 

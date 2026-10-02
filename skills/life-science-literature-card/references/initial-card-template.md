@@ -20,9 +20,9 @@ read_stage: initial_card
 zotero_annotations: not_imported
 graphical_abstract: generated
 image_mode: always
-card_cover: "[[ͼƬ��Դ/literature_cards/YYYY_FirstAuthor_short_title_graphical_abstract.png]]"
-card_logic_map: "[[ͼƬ��Դ/literature_cards/YYYY_FirstAuthor_short_title_logic_map.svg]]"
-card_summary: "һ��Լ 40�C80 �ֵ����Ľ��ۡ�"
+card_cover: "[[图片资源/literature_cards/YYYY_FirstAuthor_short_title_graphical_abstract.png]]"
+card_logic_map: "[[图片资源/literature_cards/YYYY_FirstAuthor_short_title_logic_map.svg]]"
+card_summary: "一条约 40–80 字的中文结论。"
 note_type: literature-card
 priority: medium
 projects: []
@@ -36,86 +36,86 @@ last_literature_update: YYYY-MM-DD
 created_by: codex
 ---
 
-# ���Ķ̱���
+# 中文短标题
 
-> [!literature-summary] һ�仰ץסȫ��
-> **����**
-
-> [!literature-grid]
->
-> > [!info] �о�����
-> > - **�о����ͣ�**
-> > - **������**
-> > - **�������ݣ�**
-> > - **��Ҫ������**
->
-> > [!tip] �����ж�
-> > - **ֵ�þ�����**
-> > - **��ֵ�ÿ���**
-> > - **����ֵ��**
-> > - **��Ҫ���裺**
-
-## ͼ��ժҪ
-
-![[ͼƬ��Դ/literature_cards/YYYY_FirstAuthor_short_title_graphical_abstract.png|1000]]
-
-## �Ķ�ǰ����ʶ��Щ����
+> [!literature-summary] 一句话抓住全文
+> **……**
 
 > [!literature-grid]
 >
-> > [!concept] ���� 1
-> > ˵������ʲô���Լ���Ϊʲô��Ӱ��Ա��ĵ����⡣
+> > [!info] 研究画像
+> > - **研究类型：**
+> > - **样本：**
+> > - **核心数据：**
+> > - **主要产出：**
 >
-> > [!concept] ���� 2
-> > ��
+> > [!tip] 快速判断
+> > - **值得精读：**
+> > - **最值得看：**
+> > - **最大价值：**
+> > - **主要警惕：**
 
-## �����߼���ͼ
+## 图表摘要
 
-> [!literature-story]- �������ߣ����չ����
-> ���о�ȱ�ڵ��ؼ����۵�һ�μ��������
+![[图片资源/literature_cards/YYYY_FirstAuthor_short_title_graphical_abstract.png|1000]]
 
-![[ͼƬ��Դ/literature_cards/YYYY_FirstAuthor_short_title_logic_map.svg|1100]]
+## 阅读前先认识这些概念
 
-> [!step]- 01������
-> - **���ݣ�**
-> - **��һ�׶εõ���**
-> - **�������£�**
+> [!literature-grid]
+>
+> > [!concept] 概念 1
+> > 说明它是什么，以及它为什么会影响对本文的理解。
+>
+> > [!concept] 概念 2
+> > …
 
-> [!step]- 02�����ݻ����
-> ��
+## 文章逻辑地图
 
-## ���������
+> [!literature-story]- 叙事主线（点击展开）
+> 从研究缺口到关键结论的一段简洁叙述。
 
-> [!method] ������
-> **����ʲô��** ��
-> **����������ʲô��** ��
-> **����ʱ��Ҫ�˶ԣ�** ��
+![[图片资源/literature_cards/YYYY_FirstAuthor_short_title_logic_map.svg|1100]]
 
-## �ؼ�֤��
+> [!step]- 01｜问题
+> - **依据：**
+> - **这一阶段得到：**
+> - **承上启下：**
 
-| ֤�� | ��Ӧͼ�� | ֧�ŵĽ��� | ��Ҫ�����ľ��� |
+> [!step]- 02｜数据或设计
+> …
+
+## 方法与分析
+
+> [!method] 方法名
+> **它是什么：** …
+> **本文用它做什么：** …
+> **读的时候要核对：** …
+
+## 关键证据
+
+| 证据 | 对应图表 | 支撑的结论 | 需要保留的警惕 |
 |---|---|---|---|
 |  |  |  |  |
 
-## ����������
+## 创新与限制
 
-| ���������� | ���ƻ�������� |
+| 真正的新意 | 限制或替代解释 |
 |---|---|
 |  |  |
 
-## ���ҿ��������
+## 对我课题的连接
 
-- **�ɽ�������/������**
-- **�ɼ�����뷨��**
-- **��Ҫֱ��Ǩ�Ƶĵط���**
+- **可借鉴的设计/方法：**
+- **可检验的想法：**
+- **不要直接迁移的地方：**
 
-## ����ʱ���ŵ�����
+## 精读时带着的问题
 
-1. ��
+1. …
 
-## ��Դ�� Zotero
+## 来源与 Zotero
 
-> [!source]- ��Դ��Ϣ
+> [!source]- 来源信息
 > - Zotero: `zotero://select/library/items/<zotero_key>`
 > - MinerU: `sources/mineru/<zotero_key>/<file>.md`
 ```

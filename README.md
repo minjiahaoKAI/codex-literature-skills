@@ -1,53 +1,57 @@
-# Zotero �� Obsidian �����Ķ� Skills
+# Zotero → Obsidian 文献阅读 Skills
 
-����һ�׹� Codex ����ʹ�õ��������� skill��
+**简体中文** | [English](README.en.md)
 
-- `life-science-literature-card`���� Zotero PDF �� MinerU ȫ����ȡ���ɳ�����Ƭ��ͼ��ժҪ���߼�ͼ��
-- `life-science-reading-session`��Χ�� PDF��Zotero ���������п�Ƭ���о����ʴ𣬲����û�Ҫ��ʱ���ϱʼǡ�
+这是一套供 Codex 本地使用的两个独立 skill：
 
-���� skill ������ Zotero ���ݡ�Obsidian Vault��MinerU CLI��API token �����߱������á�Ĭ���� Vault ��ʹ�� `���ױʼ�`��`ͼƬ��Դ/literature_cards` �� `sources/mineru`�����ڰ�װ��Ƭʱѡ���������Ŀ¼����ѡ�� Obsidian Bases ��Ƭǽ��ͼ�� CSS snippet λ�� `skills/life-science-literature-card/assets/card-wall/`��
+- `life-science-literature-card`：从 Zotero PDF 和 MinerU 全文提取生成初读卡片、图表摘要和逻辑图。
+- `life-science-reading-session`：围绕 PDF、Zotero 高亮和已有卡片进行精读问答，并在用户要求时整合笔记。
 
-## �� Windows �ϰ�װ skill
+文献笔记默认以中文为主；[英文版说明](README.en.md) 提供对应的安装与使用指南。
 
-��Ҫ Codex��Zotero Desktop��Obsidian���Լ� Python 3.10 ����°汾������ Obsidian �д�������Լ��� Vault��
+两个 skill 不包含 Zotero 数据、Obsidian Vault、MinerU CLI、API token 或作者本机配置。默认在 Vault 中使用 `文献笔记`、`图片资源/literature_cards` 和 `sources/mineru`；可在安装卡片时选择其他相对目录。可选的 Obsidian Bases 卡片墙视图和 CSS snippet 位于 `skills/life-science-literature-card/assets/card-wall/`。
 
-������ Codex ��˵��
+## 在 Windows 上安装 skill
 
-> �� `$skill-installer` �� `https://github.com/minjiahaoKAI/codex-literature-skills` ��װ `skills/life-science-literature-card` �� `skills/life-science-reading-session`����װ��ȷ������ skill �ɼ�����Ҫ�����κ��˵� Zotero ���ݡ�Obsidian Vault ����Կ��
+需要 Codex、Zotero Desktop、Obsidian，以及 Python 3.10 或更新版本。先在 Obsidian 中创建或打开自己的 Vault。
 
-Ҳ�������زֿⲢ�� `skills/` �µ����������ļ��зŽ����� `C:\Users\<�û���>\.agents\skills\`����� Codex û��������ʾ������ Codex������ֻ���� `SKILL.md`����Ƭ skill ������ `references/` �� `scripts/`��
+在你的 Codex 中说：
 
-## ���ñ�����Դ
+> 用 `$skill-installer` 从 `https://github.com/minjiahaoKAI/codex-literature-skills` 安装 `skills/life-science-literature-card` 和 `skills/life-science-reading-session`。安装后确认两个 skill 可见，不要复制任何人的 Zotero 数据、Obsidian Vault 或密钥。
 
-1. �����ĵ��������� Zotero Desktop��ȷ��Ŀ�������пɴ򿪵ı��� PDF��û�� Zotero ����ʱ��ֱ�Ӱ� PDF ·������ Codex Ҳ�ܿ�ʼ������Ƭ��
-2. ���� Codex ���Լ��� Obsidian Vault ����·�������ڱ������� `OBSIDIAN_VAULT_PATH` ������������Ҫ����ʵ·���ύ�� GitHub��
-3. ��װ MinerU Open API CLI���������Լ����˺������� token����һ�ڣ���
-4. ���ϣ���Զ���ȡ Zotero ������������װ [Obsidian Vault MCP](https://github.com/luffysolution-svg/obsidian-vault-mcp)�����ǿ�ѡ���������ж����ıʼǲ��ֺ�д�����̡���ȷ������Ŀ��Ŀ¼������ Codex ʹ������д�빦�ܡ�
+也可以下载仓库并把 `skills/` 下的两个完整文件夹放进你电脑上的 `C:\Users\<用户名>\.agents\skills\`。如果 Codex 没有立即显示，重启 Codex。请勿只复制 `SKILL.md`；卡片 skill 还依赖 `references/` 和 `scripts/`。
 
-## �������׿�Ƭǽ����ѡ��
+## 配置本机来源
 
-���׿�Ƭǽʹ�� Obsidian ���õ� **Bases** ��Ƭ��ͼ���� Notebook Navigator �����ļ���Ƭ�б���ͬ���� Codex ��ȡ [��Ƭǽ��װ˵��](skills/life-science-literature-card/references/card-wall-setup.md)�������� `Literature_Card_Wall` �ļ��������Լ������ױʼ�Ŀ¼���� CSS snippet �������Լ��� `.obsidian/snippets/`��Ȼ���� Obsidian �ġ����� �� ��� �� CSS ����Ƭ�Ρ�������������Ҫ�������� `.obsidian` ����Ŀ¼�����ʵ�����ױʼǡ�
+1. 在你的电脑上启动 Zotero Desktop，确认目标论文有可打开的本地 PDF。没有 Zotero 集成时，直接把 PDF 路径交给 Codex 也能开始初读卡片。
+2. 告诉 Codex 你自己的 Obsidian Vault 绝对路径，或在本机设置 `OBSIDIAN_VAULT_PATH` 环境变量。不要把真实路径提交到 GitHub。
+3. 安装 MinerU Open API CLI，并使用你自己的账号配置 token（见下方 MinerU 安装说明）。
+4. 如果希望自动读取 Zotero 高亮，可以另装 [Obsidian Vault MCP](https://github.com/luffysolution-svg/obsidian-vault-mcp)。这是可选依赖；它有独立的笔记布局和写入流程。先确认两者目标目录，再让 Codex 使用它的写入功能。
 
-����ֱ�Ӷ����� Codex ˵��
+## 添加文献卡片墙（可选）
 
-> ������Ҵ� `https://github.com/minjiahaoKAI/codex-literature-skills` ��װ�� `life-science-literature-card` skill�����������е� `references/card-wall-setup.md`���òֿ⸽�������� `assets/card-wall/` �ļ������ҵ� Obsidian Vault ���������׿�Ƭǽ����ȷ���ҵ� Vault ·���� Bases �����ã���Ŀ���ļ��Ѵ��ڣ��ȱȽϲ�����ԭ�ļ�����װ��� `Literature_Card_Wall.base`��������п�Ƭ�ķ��桢ժҪ����ת��
+文献卡片墙使用 Obsidian 内置的 **Bases** 卡片视图。让 Codex 读取 [卡片墙安装说明](skills/life-science-literature-card/references/card-wall-setup.md)，把两份 `Literature_Card_Wall` 文件放入你自己的文献笔记目录，把 CSS snippet 放入你自己的 `.obsidian/snippets/`，然后在 Obsidian 的「设置 → 外观 → CSS 代码片段」中启用它。只需安装仓库附带的三个可复用文件。
 
-## ���� Codex ��װ MinerU
+可以直接对你的 Codex 说：
 
-��������η���**���Լ��� Codex**��
+> 请更新我从 `https://github.com/minjiahaoKAI/codex-literature-skills` 安装的 `life-science-literature-card` skill，并按照其中的 `references/card-wall-setup.md`，用仓库附带的三个 `assets/card-wall/` 文件，在我的 Obsidian Vault 中添加文献卡片墙。先确认我的 Vault 路径和 Bases 已启用；若目标文件已存在，先比较并保留原文件。安装后打开 `Literature_Card_Wall.base`，检查现有卡片的封面、摘要和跳转。
 
-> �����ҵ� Windows �����ϣ���ȷ���Ƿ����� `mineru-open-api`�����û�У���˶� [MinerU �ٷ� CLI ��װ˵��](https://github.com/opendatalab/MinerU-Ecosystem/blob/main/cli/mineru-open-api/README.md)�����ز����ٷ� Windows ��װ�ű���Ȼ��װ CLI���� `mineru-open-api version` ��֤����Ҫ��װ�����ı��� MinerU ģ���������� Open API CLI��Ҳ��Ҫ������Դ�����Ľű�����װ����� [MinerU token ҳ��](https://mineru.net/apiManage/token) �����ӣ������Լ���¼������ token����Ҫ��ȡ����ȡ����ӡ�򱣴��ҵ� token �����졢�ֿ�������ļ���ָ�����ڱ����ն����� `mineru-open-api auth` ������ʾ���� token�������� `mineru-open-api auth --verify` ��鱾�ظ�ʽ����Ҫ�ϴ����� PDF �����ԣ���������ȷͬ�⡣
+## 告诉 Codex 安装 MinerU
 
-�ٷ� Windows ��װ����Ŀǰ�� `irm https://cdn-mineru.openxlab.org.cn/open-api-cli/install.ps1 | iex`���� Codex �ȼ����Դ�ͽű����ݣ���ִ�С�CLI Ĭ�ϴ� `MINERU_TOKEN` ���û�Ŀ¼�µ� `.mineru/config.yaml` ��ȡ token��`auth --verify` ֻ��֤ token ��ʽ������֤�����߽���һ���ɹ����״�ʹ�û������û�ͬ���ϴ� PDF ��ȷ�� `extract` �ɹ���
+把下面这段发给**你自己的 Codex**：
 
-## ����
+> 请在我的 Windows 电脑上，先确认是否已有 `mineru-open-api`。如果没有，请核对 [MinerU 官方 CLI 安装说明](https://github.com/opendatalab/MinerU-Ecosystem/blob/main/cli/mineru-open-api/README.md)，下载并检查官方 Windows 安装脚本，然后安装 CLI；用 `mineru-open-api version` 验证。不要安装完整的本地 MinerU 模型来替代这个 Open API CLI，也不要运行来源不明的脚本。安装后给我 [MinerU token 页面](https://mineru.net/apiManage/token) 的链接，让我自己登录并生成 token。不要索取、读取、打印或保存我的 token 到聊天、仓库或工作区文件。指导我在本机终端运行 `mineru-open-api auth` 并按提示输入 token，再运行 `mineru-open-api auth --verify` 检查本地格式。不要上传论文 PDF 做测试，除非我明确同意。
 
-�� Codex ���� Zotero ��һƪ�������͸� MinerU �� PDF �����������У��ҵ���Դ �� ��׼��ȡ �� �ڹ��������ɿ�Ƭ��PNG �� SVG �� ��װ�ű� dry run �� ��� Vault д��Ȩ�޺�װ �� �� Obsidian �в鿴����ͼƬ�����þ��� skill ѯ��һ������ͼ���򷽷������˶Իش�ָ��ԭ�ġ�
+本仓库使用的 Windows 安装命令是 `irm https://cdn-mineru.openxlab.org.cn/open-api-cli/install.ps1 | iex`；安装前让 Codex 核对官方说明并检查脚本内容，再执行。CLI 默认从 `MINERU_TOKEN` 或用户目录下的 `.mineru/config.yaml` 读取 token。`auth --verify` 只验证 token 格式，不能证明在线解析一定成功；首次使用还需在用户同意上传 PDF 后确认 `extract` 成功。
 
-���ֿⰴ [MIT License](LICENSE) ��������Ҫ����ʵ���ġ�ͼƬ��ע�͡�Vault��`.mineru/`��token���������û����ɵĿ�Ƭ����ֿ⡣
+## 验收
 
-## �ο�����
+让 Codex 用你 Zotero 中一篇允许发送给 MinerU 的 PDF 做完整试运行：找到来源 → 精准提取 → 在工作区生成卡片、PNG 和 SVG → 安装脚本 dry run → 获得 Vault 写入权限后安装 → 在 Obsidian 中查看两个图片。再用精读 skill 询问一个具体图表或方法，并核对回答指向原文。
 
-- [Codex skill �İ�װ��ַ�](https://learn.chatgpt.com/docs/build-skills)
+本仓库按 [MIT License](LICENSE) 发布。不要把真实论文、图片、注释、Vault、`.mineru/`、token、本机配置或生成的卡片加入仓库。
+
+## 参考资料
+
+- [Codex skill 的安装与分发](https://learn.chatgpt.com/docs/build-skills)
 - [MinerU Open API CLI](https://github.com/opendatalab/MinerU-Ecosystem/blob/main/cli/mineru-open-api/README.md)
 - [Obsidian Vault MCP](https://github.com/luffysolution-svg/obsidian-vault-mcp)

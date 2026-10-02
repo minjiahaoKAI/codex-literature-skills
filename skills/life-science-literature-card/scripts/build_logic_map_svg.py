@@ -72,7 +72,7 @@ def card(x: int, y: int, fill: str, stroke: str, number: int | str, title: str, 
     title_y = y + 64 - (len(title_lines) - 1) * 15
     detail_y = y + 142 - (len(detail_lines) - 1) * 13
     out = [f'<rect x="{x}" y="{y}" width="400" height="190" rx="28" fill="{fill}" stroke="{stroke}" stroke-width="3" class="node"/>']
-    prefix = f"{number:02d}��" if isinstance(number, int) else ""
+    prefix = f"{number:02d}｜" if isinstance(number, int) else ""
     for idx, value in enumerate(title_lines):
         line_prefix = prefix if idx == 0 else ""
         out.append(f'<text x="{x + 200}" y="{title_y + idx * 30}" class="title">{line_prefix}{escape(value)}</text>')
@@ -104,7 +104,7 @@ def build(data: dict) -> str:
             edges.append(line(x1 + (400 if direction > 0 else 0) + 22 * direction, y1 + 95, x2 - 22 * direction, y2 + 95))
     last_x, last_y = positions[len(steps) - 1]
     conclusion_fill, conclusion_stroke = "#E0F8F4", "#4ABFB6"
-    conclusion_node = card(650, 770, conclusion_fill, conclusion_stroke, "", conclusion.get("title", "���Ľ���"), conclusion.get("detail", ""))
+    conclusion_node = card(650, 770, conclusion_fill, conclusion_stroke, "", conclusion.get("title", "核心解释"), conclusion.get("detail", ""))
     edges.append(f'<path d="M {last_x + 200} {last_y + 190} C {last_x + 200} 720, 850 720, 850 748" class="edge" marker-end="url(#arrow)"/>')
     title = escape(data.get("title", "ARTICLE LOGIC MAP"))
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1040" viewBox="0 0 1800 1040" role="img" aria-label="{title}">
@@ -114,7 +114,7 @@ def build(data: dict) -> str:
   <style>.edge{{fill:none;stroke:#536A88;stroke-width:5;stroke-linecap:round}}.node{{filter:url(#shadow)}}.title{{font:700 34px 'Segoe UI','Microsoft YaHei',sans-serif;fill:#1B3858;text-anchor:middle}}.detail{{font:400 27px 'Segoe UI','Microsoft YaHei',sans-serif;fill:#3F5874;text-anchor:middle}}.header{{font:700 30px 'Segoe UI','Microsoft YaHei',sans-serif;letter-spacing:3px;fill:#73829A}}</style>
 </defs>
 <rect width="1800" height="1040" rx="36" fill="#FBFCFE" stroke="#DCE4ED" stroke-width="2"/>
-<text x="80" y="88" class="header">ARTICLE LOGIC MAP �� �����Ķ�·��</text>
+<text x="80" y="88" class="header">ARTICLE LOGIC MAP · 蛇形阅读路径</text>
 {''.join(edges)}
 {''.join(nodes)}
 {conclusion_node}
