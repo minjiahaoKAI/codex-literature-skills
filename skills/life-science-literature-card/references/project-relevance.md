@@ -40,21 +40,35 @@ concrete reusable point, source locator, profile basis and transfer limitation.
 Apply the profile's thresholds verbatim. For the two-level / three-angle profile
 structure supported by the blank template:
 
-- **强相关**: direct relevance to a stated current question, or at least two
-  clearly substantiated theme/method/narrative angles. Name the matched project;
-  do not combine several weak keyword matches into a strong result.
-- **中相关**: broad thematic overlap, or one definite method/narrative connection.
+- **强相关**: a substantive theme match is necessary. Either the paper directly
+  addresses a stated current question, or it matches a broad theme AND offers a
+  concrete transferable method/narrative. Method plus narrative without theme
+  remains medium, even if useful to a current analysis. Assess each project
+  separately; never combine theme on one project with a method on another to
+  manufacture a strong match.
+- **中相关**: broad theme alone, or a definite method/narrative connection without
+  theme. A method analogy to a current task does not mean that the paper directly
+  answers that task's scientific question.
 - **弱相关或无关**: no substantive intersection; write “与当前课题无直接关联”.
 - **未评估**: profile missing or relevant information insufficient; distinguish
   this from a checked negative match.
 
-Verdict is a reading action, not a study quality grade. Strong relevance to a
-**mainline** project, or a high-quality study especially worth learning from in
-method/narrative, can justify **精读**. Ordinary medium relevance normally means
-**略读**. Explain which rule applies and retain the paper's scientific limitations.
-Do not infer that every strong match to a lower-priority interest requires 精读.
-If the profile leaves weak/unrelated verdicts unspecified, do not claim it mandates
-存档; give a separate supported reason or leave the verdict undecided.
+Verdict is a reading action, not a study quality grade. Under this calibrated
+policy, **精读** requires strong relevance AND either a direct current-question
+match or exceptional method/narrative value usable in the short term. Name the
+operation, target task, source and transfer limit; identify the near-term use and
+why this paper deserves scarce reading time. Prestige, generic quality praise,
+shared method names, future aspirations and broad overlap cannot supply these
+gates. Other strong/medium matches receive **略读**; weak matches receive **存档**.
+If a gate is uncertain, treat it as unestablished and choose the lower category.
+Do not impose a batch quota or upgrade/downrank papers to hit a preferred count.
+Weekly capacity is a prioritization constraint, not scientific evidence.
+
+`scripts/project_relevance.py` applies this specific policy to human-reviewed,
+structured evidence. It cannot infer source truth or match themes by keywords.
+Evaluate one project per record; an optional `near_term_reuse` requires a supported
+method/narrative. Missing profile returns unassessed. If the actual profile uses
+different thresholds, follow that profile and do not use this policy helper.
 
 For triage use only abstract-supported methods/narrative, and mark unverified
 transfer points as requiring the full text. Do not let relevance override evidence
@@ -75,6 +89,9 @@ and verdict display. It preserves every scientific section, asset, source, GA
 attempt/time log, reading field, user region and existing project link. Back up the
 old note, check a diff, refresh the generated-region baseline and numeric report
 binding after the content changes. Do not use a whole-card regeneration for this.
+
+An explicit user-approved link refresh may update `projects` in that scoped
+operation. Ordinary installation/update still preserves existing `projects`.
 
 ## Stable project links
 
