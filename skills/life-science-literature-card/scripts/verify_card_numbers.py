@@ -10,14 +10,22 @@ from collections import Counter
 from decimal import Decimal,InvalidOperation
 from pathlib import Path
 
-TOKEN=re.compile(r'(?<![A-Za-z0-9_])[-+−]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:[eE][+-]?\d+)?(?![A-Za-z0-9_])')
+TOKEN=re.compile(r'(?<![A-Za-z0-9_.])[-+−]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:[eE][+-]?\d+)?(?![A-Za-z0-9_])')
 SKIP_KEYS={'id','schema_version','source','sources','source_refs','locator','excerpt','file_sha256','sha256','doi','url','year','zotero_key','pdf_key','date_added','ga_attempts','ga_prompt_version','generation_elapsed_seconds','ga_qc','style','font_height_ratios','palette','max_labels','label_budget','content_area_target','title_max_width_ratio','order','position','template','number_id','label_id','claim_ids','label_ids','selected_modules','omissions','main_figures','figure','level','reference_images','reference_role'}
 
 def normalize(text):
     t=unicodedata.normalize('NFKC',str(text)).replace('−','-').replace('–',' ').replace('—',' ')
+    # MinerU can space every digit inside LaTeX math. Only join within math;
+    # whitespace-separated values in ordinary prose must remain separate.
+    def math_digits(m):
+        v=m.group(1)
+        v=re.sub(r'(?<=\d)\s+(?=[\d.])','',v)
+        return re.sub(r'(?<=\.)\s+(?=\d)','',v)
+    t=re.sub(r'\$([^$]*)\$',math_digits,t)
     t=re.sub(r'\\(?:mathrm|text|operatorname|mathbf)\{([^{}]*)\}',r'\1',t)
     t=t.replace('$','').replace('{','').replace('}','').replace('\\,','').replace('\\%','%')
     t=re.sub(r'(?<=\d)\s*,\s*(?=\d{3}(?:\D|$))',',',t)
+    t=re.sub(r'(?<![A-Za-z])(HR|OR|RR|AUROC|AUPRC|AUC|SCC)(?=[+\-]?\d)',r'\1 ',t)
     return t
 def key(v):
     try:return str(Decimal(str(v).replace(',','').replace('−','-').lstrip('+')).normalize())
@@ -26,6 +34,7 @@ def tokens(t):return [(m.group(),key(m.group()),m.start()) for m in TOKEN.findit
 def strip_nonresults(t):
     t=re.sub(r'^---\s*\n.*?\n---\s*\n','',t,flags=re.S)
     t=re.sub(r'!?\[\[.*?\]\]|!\[.*?\]\(.*?\)|https?://\S+|zotero://\S+','',t)
+    t=re.sub(r'(?<!\d)10\.\d{4,9}/[^\s<>"）)；;，,]+','',t)
     t=re.sub(r'〔.*?〕|\b(?:Fig(?:ure)?|Table|Supplementary Fig(?:ure)?)\.?\s*\d+[A-Za-z]?','',t)
     t=re.sub(r'^\s*\d+\.\s+','',t,flags=re.M)
     t=re.sub(r'\[!step\].*?\d+[｜|]','[!step]',t)

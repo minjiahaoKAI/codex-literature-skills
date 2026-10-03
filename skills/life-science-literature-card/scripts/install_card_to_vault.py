@@ -59,7 +59,15 @@ def run(args):
     if args.cover_only and (not args.update or not existing):raise ValueError('--cover-only needs an existing card and --update')
     target_note=existing[0] if existing else guarded(vault/nf/args.note.name,vault)
     if target_note.exists() and not existing:raise FileExistsError('Filename belongs to another note')
-    if existing:text=merge(target_note.read_text(encoding='utf-8'),text,args.cover_only)
+    old_assets=[]
+    if existing:
+        oldtext=target_note.read_text(encoding='utf-8');oldfm,_=split(oldtext)
+        for field_name in ['card_cover','card_logic_map']:
+            link=value(oldfm,field_name)
+            if link and not link.startswith(('http://','https://')):
+                path=link.removeprefix('[[').removesuffix(']]').split('|',1)[0]
+                old_assets.append(guarded(vault/relative_folder(path),vault))
+        text=merge(oldtext,text,args.cover_only)
     else:text=stamp(text)
     fm,_=split(text);tier=value(fm,'card_tier','full');cover=value(fm,'card_cover');logic=value(fm,'card_logic_map')
     v2='card_tier' in fm
@@ -123,7 +131,9 @@ def run(args):
     uid=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'-'+uuid.uuid4().hex[:8]
     backup=guarded(vault/nf/'_backup'/uid,vault);temps=[];backups={};changed=[];created=[]
     try:
-        all_targets=[target_note]+[t for _,t in plan]
+        # An upgrade often uses a new cover filename. Back up the old linked
+        # image/map even when neither is a replacement target in this plan.
+        all_targets=list(dict.fromkeys([target_note]+[t for _,t in plan]+old_assets))
         for target in all_targets:
             guarded(target,vault)
             if target.exists():

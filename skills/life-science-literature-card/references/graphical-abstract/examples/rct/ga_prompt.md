@@ -41,7 +41,9 @@ P2 at integration: One typography-only dashed hypothesis box: daylight to muscle
 P3 at footer: Sourced footer; flat scientific schematic and exact labels only; labels primary, evidence.
 
 Allowed connectors only:
-path1 → path2: hypothesis, dashed; 假说.
-path2 → path3: hypothesis, dashed; 机制待验证.
+path1 → path2: hypothesis, dashed. No additional arrow caption.
+Planning note only, NOT visible text: 假说
+path2 → path3: hypothesis, dashed. No additional arrow caption.
+Planning note only, NOT visible text: 机制待验证
 
-No invented data or tissues. Show no labels beyond this inventory.
+No invented data or tissues. Show every inventory label once, including any connector annotations; do not render planning notes, extra icon sublabels or repeated labels. No organ glyph for a diagnosis when that organ was not measured. No grids, bars or curves invented to depict a result.

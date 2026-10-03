@@ -6,6 +6,19 @@ import build_logic_map_svg as logic
 import build_key_results as results
 
 class NumbersAndSVGTests(unittest.TestCase):
+    def test_spaced_mineru_math_and_attached_hr(self):
+        src=r'Glucose $7 . 4$, range $5 0 . 9\%$ versus $4 3 . 3\%$, $p=0 . 0 3 6$. HR 0.84.'
+        card='血糖7.4；范围50.9对43.3；p=0.036；HR0.84。DOI：10.1002/advs.76217。'
+        r=verify(src,[('card','md',card)])
+        self.assertEqual(r['not_found'],0)
+        self.assertEqual(r['quantities'],5)
+        self.assertEqual(verify('Values 5 0 9',[('card','md','效应50.9')])['status'],'fail')
+    def test_spaced_math_derivation_still_checks_operands(self):
+        src=r'Range $5 0 . 9\%$ versus $4 3 . 3\%$.'
+        ledger={'claims':[{'id':'delta','value':7.6,'locator':'Fig 2E','excerpt':src,'derivation':{'operation':'subtract','operands':[50.9,43.3]}}]}
+        self.assertEqual(verify(src,[('card','md','增加7.6个百分点')],ledger)['status'],'pass')
+        ledger['claims'][0]['value']=9.6
+        self.assertEqual(verify(src,[('card','md','增加9.6个百分点')],ledger)['status'],'fail')
     def test_thousands_ci_and_metadata_not_scientific(self):
         src='Sample n=89,309. HR 0.84, 95% CI 0.81-0.87.'
         card='---\nyear: 2026\ndoi: 10.1000/1234\n---\n样本89309，HR 0.84（95%CI 0.81–0.87）。〔Fig 4〕'

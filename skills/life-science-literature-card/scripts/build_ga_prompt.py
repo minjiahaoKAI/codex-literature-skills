@@ -19,9 +19,11 @@ def build(story,visual,evidence=None,feedback=''):
         out.append(f"{p['id']} at {p['position']}: {p['description']}; labels {', '.join(p['label_ids'])}.")
         for i in p.get('icons',[]):out.append(f"  Labeled icon: {i['name']}, next to label {i['label_id']}.")
     out+=['','Allowed connectors only:']
-    for c in visual.get('connectors',[]):out.append(f"{c['from']} → {c['to']}: {c['semantic']}, {c['style']}; {c.get('label','')}.")
+    for c in visual.get('connectors',[]):
+        out.append(f"{c['from']} → {c['to']}: {c['semantic']}, {c['style']}. No additional arrow caption.")
+        if c.get('label'):out.append('Planning note only, NOT visible text: '+c['label'])
     if not visual.get('connectors'):out.append('No relational arrows between panels. Direction arrows already appear only in exact finding labels.')
-    out+=['','No invented data or tissues. Show no labels beyond this inventory.']
+    out+=['','No invented data or tissues. Show every inventory label once, including any connector annotations; do not render planning notes, extra icon sublabels or repeated labels. No organ glyph for a diagnosis when that organ was not measured. No grids, bars or curves invented to depict a result.']
     if feedback:out+=['','User feedback within approved scientific/style boundaries:',feedback]
     return '\n'.join(out)+'\n'
 

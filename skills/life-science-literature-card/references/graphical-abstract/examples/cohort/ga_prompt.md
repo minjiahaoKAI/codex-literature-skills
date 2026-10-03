@@ -32,4 +32,4 @@ P0 at context: Sourced context; flat scientific schematic and exact labels only;
 Allowed connectors only:
 No relational arrows between panels. Direction arrows already appear only in exact finding labels.
 
-No invented data or tissues. Show no labels beyond this inventory.
+No invented data or tissues. Show every inventory label once, including any connector annotations; do not render planning notes, extra icon sublabels or repeated labels. No organ glyph for a diagnosis when that organ was not measured. No grids, bars or curves invented to depict a result.

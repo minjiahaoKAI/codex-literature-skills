@@ -46,6 +46,9 @@
 .literature-note .callout[data-callout="literature-grid"] .callout { margin: 0; min-width: 0; }
 .literature-note table { font-size: .94em; }
 .literature-note th { background: var(--literature-panel); }
+/* Reading mode begins with the cover and decision; properties stay available
+   through Obsidian's Properties pane and source/editor view. */
+.markdown-preview-view.literature-note .metadata-container { display: none; }
 .literature-note .image-embed { max-width: 100%; }
 .literature-note img[src*="_cover"],
 .literature-note img[src*="graphical_abstract"] {

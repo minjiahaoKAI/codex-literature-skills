@@ -2,6 +2,7 @@
 """Persist per-card elapsed time and enforce hard-error-only cover retries."""
 from __future__ import annotations
 import argparse,json,hashlib
+import shutil
 from datetime import datetime,timezone
 from pathlib import Path
 from validate_ga_briefs import qc_decision
@@ -20,7 +21,10 @@ def begin_attempt(log,prompt):
         prior=log['attempts'][-1]
         if not prior.get('finished_at'):raise ValueError('Prior call is not reviewed')
         if not prior.get('qc',{}).get('hard_failures'):raise ValueError('Soft deviations do not authorize regeneration')
-    log['attempts'].append(dict(number=n+1,started_at=now(),finished_at=None,prompt_sha256=digest(prompt),prompt=str(prompt),qc=None))
+    archived=prompt.with_name(prompt.stem+f'_attempt_{n+1}'+prompt.suffix)
+    if archived.exists() and digest(archived)!=digest(prompt):raise FileExistsError('Attempt prompt archive already contains different text')
+    if not archived.exists():shutil.copy2(prompt,archived)
+    log['attempts'].append(dict(number=n+1,started_at=now(),finished_at=None,prompt_sha256=digest(archived),prompt=str(archived),source_prompt=str(prompt),qc=None))
     log['ga_attempts']=n+1
     return log
 def review(log,image,visual,qc):

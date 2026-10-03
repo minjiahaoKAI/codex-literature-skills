@@ -46,6 +46,13 @@ User edits outside generated region
     def test_unprotected_manual_change_conflicts(self):
         installer.run(self.args);dest=self.v/'文献笔记/note.md';dest.write_text(dest.read_text(encoding='utf-8').replace('Original text','Hand-edited prose'),encoding='utf-8');self.args.update=True
         with self.assertRaises(ValueError):installer.run(self.args)
+    def test_update_with_new_cover_filename_backs_up_old_cover(self):
+        installer.run(self.args);old=(self.v/'图片资源/literature_cards/cover.png').read_bytes()
+        new=self.base/'new_cover.png';new.write_bytes(self.png.read_bytes());self.args.graphical_abstract=new
+        self.note.write_text(self.note.read_text(encoding='utf-8').replace('cover.png','new_cover.png'),encoding='utf-8');self.args.update=True
+        result=installer.run(self.args);backup=Path(result['backup'])
+        self.assertEqual((backup/'图片资源/literature_cards/cover.png').read_bytes(),old)
+        self.assertTrue((backup/'文献笔记/note.md').exists())
     def test_replace_failure_rolls_back_note(self):
         installer.run(self.args);dest=self.v/'文献笔记/note.md';before=dest.read_bytes();self.args.update=True
         old_png=(self.v/'图片资源/literature_cards/cover.png').read_bytes();self.png.write_bytes(self.png.read_bytes()+b'updated')

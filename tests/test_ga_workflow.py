@@ -31,4 +31,11 @@ class CoverBudgetTests(unittest.TestCase):
         q={**self.q,'transcription':self.q['transcription']*2};self.assertEqual(qc_decision(self.v,q)['ga_qc'],'failed')
     def test_missing_science_check_is_not_a_pass(self):
         q={**self.q,'hard_checks':{'literal_text':'pass'}};self.assertEqual(qc_decision(self.v,q)['ga_qc'],'failed')
+    def test_attempt_archives_prompt_before_retry_overwrites_it(self):
+        l=workflow.start('KEY','full');workflow.begin_attempt(l,self.p)
+        first=Path(l['attempts'][0]['prompt']);self.assertEqual(first.read_text(),'prompt')
+        bad={**self.q,'transcription':[{'id':'x','text':'Wrong'}]};workflow.review(l,self.im,self.v,bad)
+        self.p.write_text('corrective prompt');workflow.begin_attempt(l,self.p)
+        self.assertEqual(first.read_text(),'prompt')
+        self.assertNotEqual(l['attempts'][0]['prompt_sha256'],l['attempts'][1]['prompt_sha256'])
 if __name__=='__main__':unittest.main()
