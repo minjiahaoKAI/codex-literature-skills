@@ -1,6 +1,9 @@
-# Initial Literature Card Template
+# Full card v2 (initial-card filename retained)
 
-Use this reference to draft a final card. Fill all source/provenance fields and keep the visual structure.
+Keep all legacy fields; fill values from sources, not from this scaffold. The
+cover is first, limited by CSS to a modest first-screen height. Important claims
+end in locators. Read only the primary paper-type file; mixed designs may need
+one relevant modifier. Use generated-region markers for safe future updates.
 
 ```markdown
 ---
@@ -13,109 +16,101 @@ doi: ""
 url: ""
 zotero_key: ""
 pdf_key: ""
-mineru_source: "sources/mineru/<zotero_key>/<file>.md"
-source_status: local_zotero_pdf_mineru_extract
-mineru_mode: extract
+mineru_source: ""
+source_status: ""
+mineru_mode: ""
 read_stage: initial_card
 zotero_annotations: not_imported
 graphical_abstract: generated
 image_mode: always
-card_cover: "[[图片资源/literature_cards/YYYY_FirstAuthor_short_title_graphical_abstract.png]]"
-card_logic_map: "[[图片资源/literature_cards/YYYY_FirstAuthor_short_title_logic_map.svg]]"
-card_summary: "一条约 40–80 字的中文结论。"
+card_cover: ""
+card_logic_map: ""
+card_summary: ""
 note_type: literature-card
 priority: medium
 projects: []
 topics: []
 methods: []
-cssclasses:
-  - literature-note
-tags:
-  - literature-card
+cssclasses: [literature-note]
+tags: [literature-card]
 last_literature_update: YYYY-MM-DD
 created_by: codex
+study_type: ""
+publication_stage: results
+design_summary: ""
+verdict: 精读
+key_result: ""
+date_added: YYYY-MM-DD
+card_tier: full
+ga_prompt_version: house-style-v1
+ga_attempts: 1
+ga_qc: passed
+generation_elapsed_seconds: 0
+generation_log: ""
 ---
 
-# 中文短标题
+%% generated:start %%
+![[图片资源/literature_cards/<stem>_cover.png]]
 
-> [!literature-summary] 一句话抓住全文
-> **……**
+> [!literature-summary] 一句话结论
+> 具体结论与证据边界。〔定位〕
+> **判断：** 精读/略读/存档 · **课题：** 实际匹配或未评估 · **亮点：** 一项 · **疑点：** 一项
 
-> [!literature-grid]
->
-> > [!info] 研究画像
-> > - **研究类型：**
-> > - **样本：**
-> > - **核心数据：**
-> > - **主要产出：**
->
-> > [!tip] 快速判断
-> > - **值得精读：**
-> > - **最值得看：**
-> > - **最大价值：**
-> > - **主要警惕：**
+## 研究画像
 
-## 图表摘要
+| 字段 | 原文信息 |
+|---|---|
+| PICO/PECO/任务 | |
+| 设计与数据来源 | |
+| 有效样本与时间 | |
 
-![[图片资源/literature_cards/YYYY_FirstAuthor_short_title_graphical_abstract.png|1000]]
+## 关键结果
 
-## 阅读前先认识这些概念
-
-> [!literature-grid]
->
-> > [!concept] 概念 1
-> > 说明它是什么，以及它为什么会影响对本文的理解。
->
-> > [!concept] 概念 2
-> > …
-
-## 文章逻辑地图
-
-> [!literature-story]- 叙事主线（点击展开）
-> 从研究缺口到关键结论的一段简洁叙述。
-
-![[图片资源/literature_cards/YYYY_FirstAuthor_short_title_logic_map.svg|1100]]
-
-> [!step]- 01｜问题
-> - **依据：**
-> - **这一阶段得到：**
-> - **承上启下：**
-
-> [!step]- 02｜数据或设计
-> …
-
-## 方法与分析
-
-> [!method] 方法名
-> **它是什么：** …
-> **本文用它做什么：** …
-> **读的时候要核对：** …
+- 原文效应、CI、比较单位和来源；主要/次要/探索标签。〔Fig/Table〕
+- 若有准确结果图：![[图片资源/literature_cards/<stem>_results.svg]]
 
 ## 关键证据
 
-| 证据 | 对应图表 | 支撑的结论 | 需要保留的警惕 |
-|---|---|---|---|
-|  |  |  |  |
+![[sources/mineru/<key>/images/<original-figure>.jpg]]
 
-## 创新与限制
+原图的中文要点与限制。〔Fig〕
 
-| 真正的新意 | 限制或替代解释 |
-|---|---|
-|  |  |
+## 方法要点
 
-## 对我课题的连接
+> [!method] 对结论关键的方法
+> 做什么、本文贡献、精读时核对什么。〔Methods〕
 
-- **可借鉴的设计/方法：**
-- **可检验的想法：**
-- **不要直接迁移的地方：**
+## 可信度评估
+
+| 检查点 | 状态 | 理由与定位 |
+|---|---|---|
+| 按类型列关键检查 | 已处理/部分处理/未处理/原文未说明/不适用 | |
+
+## 与我课题的连接
+
+仅依据_my_projects.md；缺失时未评估，不编课题。
 
 ## 精读时带着的问题
 
-1. …
+- 三至五个具体问题。
 
-## 来源与 Zotero
+> [!design]- 研究设计图
+> ![[图片资源/literature_cards/<stem>_design.svg]]
 
-> [!source]- 来源信息
-> - Zotero: `zotero://select/library/items/<zotero_key>`
-> - MinerU: `sources/mineru/<zotero_key>/<file>.md`
+> [!concept]- 概念速查
+> 定义与本研究中的作用。
+
+> [!literature-story]- 逻辑地图与证据注释
+> ![[图片资源/literature_cards/<stem>_logic.svg]]
+> > [!step]- 补充证据
+> > 只补来源、假设和限制，不重复图中的短标题/一句话。
+
+> [!source]- 来源与Zotero
+> 本地PDF、MinerU来源、版本、Zotero链接与数字核验。
+%% generated:end %%
+
+## 我的阅读记录
+
+%% user:start %%
+%% user:end %%
 ```
