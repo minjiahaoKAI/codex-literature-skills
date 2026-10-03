@@ -52,3 +52,8 @@ Optional `migrate_cards.py --folder <notes> --dry-run` fills only missing fields
 the real run backs up before changing metadata and leaves body unchanged. Legacy
 unknown generation count/time is null; legacy GA QC is unverified, not passed.
 The card wall works without migration through fallback formulas.
+
+Default no-cover triage installs the shared type SVG set on first use. Reusing
+identical placeholders adds no work to the write plan; they are not embedded in
+the body. Upgrading with --update produces the dedicated full PNG and preserves
+read_stage, annotations, projects, date_added and protected reading notes.

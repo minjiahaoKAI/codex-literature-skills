@@ -26,3 +26,11 @@ Obsidian UI acceptance; record the app render separately.
 Official references: [Bases syntax](https://obsidian.md/help/bases/syntax),
 [functions](https://obsidian.md/help/bases/functions),
 [Cards](https://obsidian.md/help/bases/views/cards).
+
+Copy all bundled `assets/card-wall/placeholders/*.svg` into
+`图片资源/literature_card_placeholders/`. No-cover triage installation prepares
+these shared files transactionally and skips identical existing copies. Conflicting
+files require explicit update and backup. The Base maps the eight paper-type
+filenames, falling back to other. These images say 类型占位 and contain no paper
+findings; never write a placeholder into card_cover or mark it as generated GA.
+Verify real covers take priority and missing/unknown legacy types still display.

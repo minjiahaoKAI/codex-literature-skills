@@ -1,8 +1,10 @@
 # Triage card v2
 
 No MinerU invocation. Ground facts only in metadata/abstract (optionally the first
-two PDF pages). Default cover for a single triage request, disabled if requested;
-batch count/tier/cover setting must be confirmed before work. No cover numbers.
+two PDF pages). Default: no dedicated cover, no image generation, no story/visual briefs or GA
+QC. The wall supplies a shared study-type image without changing card_cover.
+Explicit cover requests use the normal cover workflow; batch count/tier/cover
+setting must be confirmed before work.
 Unknowns stay unknown; upgrading reruns full-cover preparation without resetting
 deep-reading fields. Use the frontmatter contract; `card_tier: triage`,
 `source_status: zotero_metadata_abstract`, `mineru_mode: not_used`, empty
@@ -10,8 +12,6 @@ deep-reading fields. Use the frontmatter contract; `card_tier: triage`,
 
 ```markdown
 %% generated:start %%
-![[图片资源/literature_cards/<stem>_triage_cover.png]]
-
 > [!literature-summary] 一句话与快速判断
 > 摘要支持的结论，注明摘要范围。〔Abstract〕
 > **判断：** 精读/略读/存档 · **亮点：** · **疑点：**
@@ -52,3 +52,8 @@ deep-reading fields. Use the frontmatter contract; `card_tier: triage`,
 %% user:start %%
 %% user:end %%
 ```
+
+No-cover metadata: `card_cover: ""`, `graphical_abstract: ""`,
+`card_logic_map: ""`, `image_mode: disabled`, `ga_attempts: 0`,
+`ga_qc: not_generated`. Record actual total time in a private generation log;
+its image-generation stage is zero. Upgrade to full generates a dedicated cover.

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="随机试验 类型占位">
+<rect width="640" height="400" fill="#FAFAF7"/>
+<rect x="28" y="28" width="584" height="344" rx="14" fill="#EEF4F1"/>
+<g fill="none" stroke="#4F8A7B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M180 90v45m0 0-60 40m60-40 60 40M120 175v40m120-40v40"/><rect x="100" y="215" width="40" height="25" rx="5"/><rect x="220" y="215" width="40" height="25" rx="5"/></g>
+<text x="320" y="165" font-family="&#x27;Microsoft YaHei&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;Segoe UI&#x27;,sans-serif" font-size="32" font-weight="600" fill="#2F3437">随机试验</text>
+<text x="320" y="205" font-family="&#x27;Microsoft YaHei&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;Segoe UI&#x27;,sans-serif" font-size="22" font-weight="400" fill="#6B7280">类型占位</text>
+<text x="320" y="238" font-family="&#x27;Microsoft YaHei&#x27;,&#x27;Noto Sans CJK SC&#x27;,&#x27;Segoe UI&#x27;,sans-serif" font-size="18" font-weight="400" fill="#6B7280">专属封面在完整卡中生成</text>
+</svg>

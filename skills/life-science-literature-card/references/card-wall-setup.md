@@ -1,7 +1,7 @@
 # Optional literature card wall setup
 
 Read [card-wall-v2.md](card-wall-v2.md) for view/compatibility details. Resolve the
-recipient's Vault and verify Bases is enabled. Install these four reusable files:
+recipient's Vault and verify Bases is enabled. Install these reusable files:
 
 - `assets/card-wall/Literature_Card_Wall.base` and `.md` in the chosen notes folder;
 - `assets/card-wall/literature-card-wall.css` and `assets/literature-note.css` in
@@ -13,10 +13,18 @@ another user's `.obsidian` configuration. Obtain required filesystem permission.
 Enable both snippets in Settings → Appearance and open the Base/entry note.
 
 Check the four views, summary/verdict/type under the covers, full and legacy
-cards, image contain fit, light/dark themes and a narrow note pane. Images must
-be local resolvable `card_cover` wikilinks. Old cards need no migration. A missing
-new field uses a fallback; a missing image leaves a normal card without a cover.
+cards, image contain fit, light/dark themes and a narrow note pane. Images use `formula.display_cover`: an existing card_cover takes priority;
+otherwise a study-type SVG is shown. Missing or unknown type uses other.svg.
+Old cards need no migration.
 If a card is absent, inspect note_type, links and indexing first.
 
 Do not claim successful UI installation from filesystem checks alone. If no app
 connection is possible, report that limitation and keep a ready staging package.
+
+Copy all bundled `assets/card-wall/placeholders/*.svg` into
+`图片资源/literature_card_placeholders/`. No-cover triage installation prepares
+these shared files transactionally and skips identical existing copies. Conflicting
+files require explicit update and backup. The Base maps the eight paper-type
+filenames, falling back to other. These images say 类型占位 and contain no paper
+findings; never write a placeholder into card_cover or mark it as generated GA.
+Verify real covers take priority and missing/unknown legacy types still display.

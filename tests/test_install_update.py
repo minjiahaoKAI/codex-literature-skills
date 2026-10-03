@@ -66,6 +66,24 @@ User edits outside generated region
         self.assertEqual((self.v/'图片资源/literature_cards/cover.png').read_bytes(),old_png)
     def test_metadata_migration_body_is_identical(self):
         old=self.note.read_text(encoding='utf-8');new,missing=migrate(old);self.assertTrue(missing);self.assertEqual(split(old)[1],split(new)[1]);self.assertEqual(value(split(new)[0],'ga_qc'),'unverified')
+    def test_quoted_emphasis_migrates_but_real_yaml_references_are_refused(self):
+        old=self.note.read_text(encoding='utf-8').replace('"Conclusion"','"*Lactobacillus crispatus* and literal <<: *alias"')
+        new,missing=migrate(old)
+        self.assertTrue(missing);self.assertEqual(split(new)[1],split(old)[1])
+        self.assertEqual(split(new)[0]['card_summary'],split(old)[0]['card_summary'])
+        for scalar in ['&anchor "value"','*alias','["literal", *alias]']:
+            with self.assertRaises(ValueError):split(old.replace('custom_field: "Keep me"','custom_field: '+scalar))
+    def test_no_cover_triage_installs_shared_assets_without_fabricating_cover(self):
+        import hashlib
+        tx=self.note.read_text(encoding='utf-8').replace('[[图片资源/literature_cards/cover.png]]','').replace('[[图片资源/literature_cards/logic.svg]]','').replace(' ![[图片资源/literature_cards/cover.png|1000]]','')
+        tx=tx.replace('note_type: literature-card','note_type: literature-card\ncard_tier: triage\nga_attempts: 0\nga_qc: not_generated\nimage_mode: disabled')
+        self.note.write_text(tx,encoding='utf-8');report=self.base/'numbers.json';report.write_text(json.dumps({'status':'pass','not_found':0,'card_sha256':hashlib.sha256(self.note.read_bytes()).hexdigest()}))
+        self.args.number_report=report;self.args.graphical_abstract=None;self.args.logic_map=None
+        self.args.dry_run=True;plan=installer.run(self.args);self.assertEqual(plan['status'],'ready');self.assertFalse((self.v/'图片资源').exists())
+        self.args.dry_run=False;installer.run(self.args);fm,body=split((self.v/'文献笔记/note.md').read_text(encoding='utf-8'))
+        self.assertEqual(value(fm,'card_cover'),'');self.assertEqual(value(fm,'ga_qc'),'not_generated');self.assertNotIn('literature_card_placeholders',body)
+        from build_card_placeholders import TYPES
+        self.assertEqual(len(list((self.v/'图片资源/literature_card_placeholders').glob('*.svg'))),len(TYPES))
     def test_path_escape_refused(self):
         self.args.notes_folder='../outside'
         with self.assertRaises(ValueError):installer.run(self.args)

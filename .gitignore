@@ -28,6 +28,7 @@ vault/
 *.webp
 *.svg
 !skills/**/assets/*.svg
+!skills/**/assets/card-wall/placeholders/*.svg
 **/*token*
 **/*credentials*
 !skills/**/references/setup.md

@@ -4,6 +4,8 @@ filters:
     - note.note_type == "literature-card"
     - '!file.path.contains("/_backup/")'
 formulas:
+  placeholder_type: 'if(note.study_type == "observational-cohort", "observational-cohort", if(note.study_type == "rct", "rct", if(note.study_type == "prediction-model", "prediction-model", if(note.study_type == "genetic-mr", "genetic-mr", if(note.study_type == "basic-mechanism", "basic-mechanism", if(note.study_type == "neuroimaging", "neuroimaging", if(note.study_type == "systematic-review-meta", "systematic-review-meta", "other")))))))'
+  display_cover: 'if(note.card_cover, note.card_cover, link("图片资源/literature_card_placeholders/" + formula.placeholder_type + ".svg"))'
   added: 'if(note.date_added, date(note.date_added), file.ctime)'
   verdict_display: 'if(note.verdict, note.verdict, "未评估")'
   type_display: 'if(note.study_type, note.study_type, "未分类")'
@@ -31,7 +33,7 @@ views:
     sort:
       - property: formula.added
         direction: DESC
-    image: note.card_cover
+    image: formula.display_cover
     cardSize: 400
     imageAspectRatio: 0.625
     imageFit: contain
@@ -49,7 +51,7 @@ views:
     sort:
       - property: formula.added
         direction: DESC
-    image: note.card_cover
+    image: formula.display_cover
     cardSize: 400
     imageAspectRatio: 0.625
     imageFit: contain
@@ -67,7 +69,7 @@ views:
     sort:
       - property: formula.added
         direction: DESC
-    image: note.card_cover
+    image: formula.display_cover
     cardSize: 400
     imageAspectRatio: 0.625
     imageFit: contain
@@ -85,7 +87,7 @@ views:
     sort:
       - property: formula.added
         direction: DESC
-    image: note.card_cover
+    image: formula.display_cover
     cardSize: 400
     imageAspectRatio: 0.625
     imageFit: contain

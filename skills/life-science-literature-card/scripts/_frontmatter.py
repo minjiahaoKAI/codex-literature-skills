@@ -26,7 +26,10 @@ def split(text):
         elif line.strip():raise ValueError('Unsupported frontmatter preamble')
     for block in blocks.values():
         # Anchors/aliases cannot be safely merged by a stdlib subset parser.
-        if re.search(r'(?:^|\s)[&*][A-Za-z_]',block) or '<<:' in block:raise ValueError('YAML anchors/aliases require manual review')
+        # Quoted scalars may contain Markdown emphasis or literal YAML syntax.
+        # Mask their contents while retaining real unquoted anchors/aliases.
+        unquoted=re.sub(r'''"(?:\\.|[^"\\])*"|'(?:[^']|'')*' ''', '', block, flags=re.S|re.X)
+        if re.search(r'(?:^|\s)[&*][A-Za-z_]',unquoted) or '<<:' in unquoted:raise ValueError('YAML anchors/aliases require manual review')
     return blocks,text[end:]
 
 def value(blocks,name,default=''):

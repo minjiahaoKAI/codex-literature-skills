@@ -13,7 +13,7 @@ The package does not include Zotero data, an Obsidian vault, the MinerU CLI, API
 
 ## v2 workflow
 
-- Quick screening creates a triage card from metadata/abstract, without MinerU.
+- Quick screening creates a triage card from metadata/abstract, without MinerU or image generation. The wall uses shared study-type placeholders.
 - Full cards summarize source-backed evidence; complex papers first get a complete main-figure evidence map.
 - Before a Zotero batch, confirm its count, tier and cover setting.
 - Upgrades preserve reading/annotation state and protected user notes.

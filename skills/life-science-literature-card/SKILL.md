@@ -12,7 +12,7 @@ method/gene names, avoid generic praise, and distinguish facts from interpretati
 ## Route the request
 
 - “做卡片 / 完整卡” or one important paper → `full`.
-- “快速看看 / 分拣” → `triage`, using metadata/abstract, no MinerU call.
+- “快速看看 / 分拣” → `triage`, using metadata/abstract, no MinerU or image-generation call by default.
 - Collection/batch → enumerate unresolved and unprocessed items, propose count,
   tier and cover setting, wait for that scope confirmation, then process.
 - Upgrade → full preparation and new full cover, preserving user reading state.
@@ -32,6 +32,8 @@ An existing complete source extraction can be reused without another upload.
 1. Resolve local Zotero metadata, abstract, PDF, extraction provenance and source
    images. Triage facts come only from the abstract/allowed initial PDF pages.
    Full cards need the complete local source; disclose gaps instead of guessing.
+   Default triage skips evidence maps, story/visual briefs and cover QC; it keeps
+   abstract numeric/semantic checks and records total elapsed time with zero GA calls.
 2. Identify the main design and publication stage. Read only its file under
    [paper-types](references/paper-types/); mixed work can add one necessary modifier.
    Image modality does not replace a cohort/RCT/prediction design. A protocol has
@@ -39,7 +41,7 @@ An existing complete source extraction can be reused without another upload.
 3. Trace question → design → actual measurements → results → qualified conclusion.
    Specify analysis population, denominators, time, comparison unit, outcome and
    adjustment. Separate primary, prespecified secondary and exploratory results.
-4. Decide complexity: simple 1–2 modules at one level needs a simplified story;
+4. For a full card or explicitly requested cover, decide complexity: simple 1–2 modules at one level needs a simplified story;
    ≥3 modules or ≥2 levels needs a complete main-figure evidence map. For a complex
    full article, make [evidence_map](references/graphical-abstract/evidence-map-schema.md)
    before choosing the 3–5 central cover modules. Keep negative primary findings
@@ -57,7 +59,7 @@ An existing complete source extraction can be reused without another upload.
    Use [my-projects-template.md](references/my-projects-template.md) if absent;
    missing profile means “未评估：尚未提供课题档案”, never invented projects.
 6. Draft from [initial-card-template.md](references/initial-card-template.md) or
-   [triage-card-template.md](references/triage-card-template.md). Cover first, then
+   [triage-card-template.md](references/triage-card-template.md). Full cover first, then
    one-line conclusion/verdict, study profile, key results and original evidence,
    unusual methods, source-backed credibility checks, project connections and
    concrete reading questions. Collapse design, concepts, logic and source detail.
@@ -68,6 +70,9 @@ An existing complete source extraction can be reused without another upload.
 
 ## AI cover: four explicit steps
 
+Triage defaults to no cover; the wall displays shared study-type placeholders.
+An explicit triage-cover request enables this workflow; upgrading to full creates
+a checked paper-specific cover while preserving reading and project state.
 Always use the built-in image-generation tool for a requested cover. No script
 overlay of its title/footer. Approved default: teal `house-style-v1`, Chinese
 labels, landscape 16:10. The gray-blue test variant is retired.
@@ -127,7 +132,10 @@ Keep briefs, prompt, selected/raw attempts, QC, feedback/reference hashes and
 Use [frontmatter.md](references/frontmatter.md). Never reset read_stage,
 zotero_annotations, projects, date_added or unknown user metadata. Card wall
 requires note_type/card_summary and a real card_cover when generated. A no-cover
-triage card has empty image links and `ga_qc: not_generated`, not a fake PNG.
+triage card has empty image links, `image_mode: disabled`, `ga_attempts: 0` and
+`ga_qc: not_generated`. Shared placeholders are display-only; never store them
+as card_cover or graphical_abstract. The installer copies bundled type SVGs once.
+Record triage timing in `sources/literature/<key>/generation_log.json`.
 
 Read [update-and-batch.md](references/update-and-batch.md). Installer supports
 dry-run, skip-existing, update, cover-only and batch with per-card failure isolation.

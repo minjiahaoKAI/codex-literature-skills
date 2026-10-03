@@ -67,3 +67,5 @@
 - [Codex skill 的安装与分发](https://learn.chatgpt.com/docs/build-skills)
 - [MinerU Open API CLI](https://github.com/opendatalab/MinerU-Ecosystem/blob/main/cli/mineru-open-api/README.md)
 - [Obsidian Vault MCP](https://github.com/luffysolution-svg/obsidian-vault-mcp)
+
+分拣卡默认不生成封面；卡片墙使用按研究类型共享的占位图。升级为完整卡时生成专属封面。

@@ -89,6 +89,15 @@ def run(args):
     if source and source.name!=key:raise ValueError('Source directory name must match Zotero key')
     source_folder=relative_folder(args.sources_folder if tier=='full' else args.triage_sources_folder)
     mapping=[];staged={}
+    # No-cover triage uses shared gallery resources; do not set card_cover.
+    if tier=='triage' and not cover:
+        from build_card_placeholders import ASSETS,TYPES,VAULT_FOLDER
+        for name in TYPES:
+            placeholder=ASSETS/(name+'.svg')
+            if not placeholder.is_file():raise ValueError('Missing shared placeholder '+name)
+            ET.parse(placeholder)
+            target=guarded(vault/relative_folder(VAULT_FOLDER)/placeholder.name,vault)
+            mapping.append((placeholder,target));staged[target]=placeholder
     if source:
         if not any(p.suffix=='.md' and p.stat().st_size for p in source.rglob('*') if p.is_file()):raise ValueError('Source directory has no readable Markdown')
         starget=guarded(vault/source_folder/key,vault)
