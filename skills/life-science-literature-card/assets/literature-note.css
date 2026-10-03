@@ -1,0 +1,64 @@
+/* Scoped to literature-note. House style v1; never recolor unrelated notes. */
+.literature-note {
+  container-type: inline-size;
+  --literature-primary: #4F8A7B;
+  --literature-panel: #EEF4F1;
+  --literature-text: #2F3437;
+  --literature-secondary: #6B7280;
+  --literature-accent: #D9895B;
+  --literature-null: #8A9099;
+  --literature-border: #dbe5df;
+  --file-line-width: 940px;
+}
+.theme-dark .literature-note {
+  --literature-panel: #253831;
+  --literature-primary: #94b9ad;
+  --literature-text: #e3e9e6;
+  --literature-secondary: #aab5b0;
+  --literature-accent: #dda080;
+  --literature-null: #a0a8b0;
+  --literature-border: #40534b;
+}
+.literature-note .callout {
+  --callout-color: 79,138,123;
+  border: 1px solid var(--literature-border);
+  border-radius: 9px;
+  background: var(--literature-panel);
+  box-shadow: none;
+}
+.literature-note .callout-title { color: var(--literature-primary); font-weight: 600; }
+.literature-note .callout-content { color: var(--literature-text); }
+.literature-note .callout[data-callout="literature-summary"] { --callout-icon: lucide-book-open; }
+.literature-note .callout[data-callout="literature-story"] { --callout-icon: lucide-route; }
+.literature-note .callout[data-callout="concept"] { --callout-icon: lucide-lightbulb; }
+.literature-note .callout[data-callout="step"] { --callout-icon: lucide-list-ordered; }
+.literature-note .callout[data-callout="method"] { --callout-icon: lucide-microscope; }
+.literature-note .callout[data-callout="source"] { --callout-icon: lucide-book-marked; }
+.literature-note .callout[data-callout="design"] { --callout-icon: lucide-git-branch; }
+.literature-note .callout[data-callout="literature-grid"] { background: transparent; border: 0; padding: 0; }
+.literature-note .callout[data-callout="literature-grid"] > .callout-title { display: none; }
+.literature-note .callout[data-callout="literature-grid"] > .callout-content {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: 14px;
+}
+.literature-note .callout[data-callout="literature-grid"] > .callout-content > p { grid-column: 1/-1; }
+.literature-note .callout[data-callout="literature-grid"] .callout { margin: 0; min-width: 0; }
+.literature-note table { font-size: .94em; }
+.literature-note th { background: var(--literature-panel); }
+.literature-note .image-embed { max-width: 100%; }
+.literature-note img[src*="_cover"],
+.literature-note img[src*="graphical_abstract"] {
+  display: block;
+  max-height: 260px;
+  width: 100%;
+  object-fit: contain;
+  background: #FAFAF7;
+  margin: 0 auto 10px;
+}
+@container (max-width: 650px) {
+  .literature-note .callout[data-callout="literature-grid"] > .callout-content { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .literature-note .callout[data-callout="literature-grid"] > .callout-content { grid-template-columns: 1fr; }
+}

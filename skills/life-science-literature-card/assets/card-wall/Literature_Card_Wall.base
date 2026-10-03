@@ -1,34 +1,91 @@
-cssclasses:
-  - literature-card-wall
 filters:
   and:
-    - note_type == "literature-card"
+    - file.ext == "md"
+    - note.note_type == "literature-card"
+    - '!file.path.contains("/_backup/")'
+formulas:
+  added: 'if(note.date_added, date(note.date_added), file.ctime)'
+  verdict_display: 'if(note.verdict, note.verdict, "未评估")'
+  type_display: 'if(note.study_type, note.study_type, "未分类")'
+  project_group: 'if(note.projects, list(note.projects).join(" · "), "未关联")'
+  week_start: 'today() - (duration("1d") * (number(today().format("E")) - 1))'
 properties:
-  card_summary:
-    displayName: Summary
-  year:
-    displayName: Year
-  journal:
-    displayName: Journal
-  doi:
-    displayName: DOI
-  tags:
-    displayName: Tags
+  note.card_summary:
+    displayName: 一句话
+  formula.verdict_display:
+    displayName: 判断
+  formula.type_display:
+    displayName: 研究类型
+  formula.added:
+    displayName: 加入日期
+  formula.project_group:
+    displayName: 课题
 views:
   - type: cards
-    name: Literature Cards
+    name: 全部
     order:
       - file.name
-      - card_summary
-      - title
-      - year
-      - journal
-      - doi
-      - priority
+      - note.card_summary
+      - formula.verdict_display
+      - formula.type_display
     sort:
-      - property: file.mtime
+      - property: formula.added
         direction: DESC
     image: note.card_cover
     cardSize: 400
-    imageAspectRatio: 0.6
+    imageAspectRatio: 0.625
+    imageFit: contain
+  - type: cards
+    name: 待精读
+    filters:
+      and:
+        - note.verdict == "精读"
+        - note.read_stage != "final_note"
+    order:
+      - file.name
+      - note.card_summary
+      - formula.verdict_display
+      - formula.type_display
+    sort:
+      - property: formula.added
+        direction: DESC
+    image: note.card_cover
+    cardSize: 400
+    imageAspectRatio: 0.625
+    imageFit: contain
+  - type: cards
+    name: 按课题
+    groupBy:
+      property: formula.project_group
+      direction: ASC
+    order:
+      - file.name
+      - note.card_summary
+      - formula.verdict_display
+      - formula.type_display
+      - note.projects
+    sort:
+      - property: formula.added
+        direction: DESC
+    image: note.card_cover
+    cardSize: 400
+    imageAspectRatio: 0.625
+    imageFit: contain
+  - type: cards
+    name: 本周新增
+    filters:
+      and:
+        - formula.added >= formula.week_start
+        - formula.added <= now()
+    order:
+      - file.name
+      - note.card_summary
+      - formula.verdict_display
+      - formula.type_display
+    sort:
+      - property: formula.added
+        direction: DESC
+    image: note.card_cover
+    cardSize: 400
+    imageAspectRatio: 0.625
     imageFit: contain
