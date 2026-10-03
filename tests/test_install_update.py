@@ -80,4 +80,15 @@ User edits outside generated region
     def test_unknown_property_is_not_overwritten(self):
         old=stamp(self.note.read_text(encoding='utf-8'));new=old.replace('Keep me','New accidental value')
         self.assertIn('custom_field: "Keep me"',merge(old,new))
+    def test_profile_fields_refresh_without_resetting_user_projects(self):
+        old=self.note.read_text(encoding='utf-8').replace('custom_field:', 'projects: ["[[User project]]"]\nproject_relevance: "未评估"\nconnection_types: []\nverdict_reason: "Not assessed"\nverdict: "略读"\ncustom_field:')
+        new=old.replace('"未评估"','"中相关"').replace('connection_types: []','connection_types: ["方法"]').replace('"Not assessed"','"A concrete method match"').replace('"[[User project]]"','"[[Proposed project]]"')
+        fm,body=split(merge(stamp(old),new))
+        self.assertEqual(value(fm,'project_relevance'),'中相关');self.assertEqual(value(fm,'connection_types'), '["方法"]')
+        self.assertEqual(value(fm,'verdict_reason'),'A concrete method match');self.assertIn('User project',fm['projects']);self.assertIn('User edits outside',body)
+    def test_legacy_card_can_receive_optional_profile_fields(self):
+        old=stamp(self.note.read_text(encoding='utf-8'))
+        new=old.replace('custom_field:', 'project_relevance: "中相关"\nconnection_types: ["叙事"]\nverdict_reason: "Evidence organization worth learning"\ncustom_field:')
+        fm,_=split(merge(old,new));self.assertEqual(value(fm,'project_relevance'),'中相关')
+        self.assertEqual(value(fm,'read_stage'),'reading');self.assertEqual(value(fm,'custom_field'),'Keep me')
 if __name__=='__main__':unittest.main()

@@ -17,6 +17,9 @@ method/gene names, avoid generic praise, and distinguish facts from interpretati
   tier and cover setting, wait for that scope confirmation, then process.
 - Upgrade → full preparation and new full cover, preserving user reading state.
 - “只重新生成封面” → cover-only route below, without rewriting the card body.
+- “只更新课题连接 / 阅读判断” → read the current profile and update its connection
+  section, relevance metadata and verdict display only; preserve science, sources,
+  covers, GA logs, reading records and existing project links. Stage for review.
 
 Read [setup.md](references/setup.md) for source resolution, recipient paths,
 token handling, upload consent, staging and installation permissions. Never
@@ -41,9 +44,12 @@ An existing complete source extraction can be reused without another upload.
    full article, make [evidence_map](references/graphical-abstract/evidence-map-schema.md)
    before choosing the 3–5 central cover modules. Keep negative primary findings
    and any tension with the paper's broader title claim.
-5. Read the user's `_my_projects.md` for real connections; use
-   [my-projects-template.md](references/my-projects-template.md) if absent. Do not
-   invent projects. Missing profile means “未评估：尚未提供课题档案”.
+5. Read the user's `_my_projects.md`, including its usage rules and exclusions.
+   Its rules take precedence over default relevance/verdict guidance. Assess broad
+   interests and current questions separately; theme, method or narrative can
+   each justify a concrete connection. Follow [project-relevance.md](references/project-relevance.md).
+   Use [my-projects-template.md](references/my-projects-template.md) if absent;
+   missing profile means “未评估：尚未提供课题档案”, never invented projects.
 6. Draft from [initial-card-template.md](references/initial-card-template.md) or
    [triage-card-template.md](references/triage-card-template.md). Cover first, then
    one-line conclusion/verdict, study profile, key results and original evidence,

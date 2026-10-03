@@ -7,6 +7,8 @@ USER=re.compile(r'%% user:start %%.*?%% user:end %%',re.S)
 PRESERVE={'read_stage','zotero_annotations','projects','priority','date_added'}
 AUTOMATED={'title','short_title','authors','year','journal','doi','url','zotero_key','pdf_key','mineru_source','source_status','mineru_mode','graphical_abstract','image_mode','card_cover','card_logic_map','card_summary','note_type','topics','methods','cssclasses','tags','last_literature_update','created_by','study_type','study_modifiers','publication_stage','design_summary','verdict','key_result','card_tier','ga_prompt_version','ga_attempts','ga_qc','generation_elapsed_seconds','generation_log','generated_content_sha256'}
 
+AUTOMATED.update({'project_relevance','connection_types','verdict_reason'})
+
 def split(text):
     if not text.startswith('---\n'):raise ValueError('Missing frontmatter')
     pos=text.find('\n---',4)

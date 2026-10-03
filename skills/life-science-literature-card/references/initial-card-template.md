@@ -38,7 +38,10 @@ created_by: codex
 study_type: ""
 publication_stage: results
 design_summary: ""
-verdict: 精读
+verdict: ""
+project_relevance: 未评估
+connection_types: []
+verdict_reason: ""
 key_result: ""
 date_added: YYYY-MM-DD
 card_tier: full
@@ -88,7 +91,17 @@ generation_log: ""
 
 ## 与我课题的连接
 
-仅依据_my_projects.md；缺失时未评估，不编课题。
+以 `_my_projects.md` 使用说明为准；缺失时未评估，不编课题。
+
+**相关性：** 强相关／中相关／弱相关或无关／未评估。
+**阅读判断与理由：** 按档案规则说明，不把期刊名或关键词当作质量证明。
+
+| 课题与广／窄层次 | 连接类型 | 具体可借鉴点与出处 | 迁移限制 |
+|---|---|---|---|
+| 实际课题 | 主题／方法／叙事，可多项 | 每项都写具体内容 | 人群、结局、设计或验证差异 |
+
+排除的主题仍可有明确方法／叙事连接。没有实质交集时写“与当前课题无直接关联”。
+稳定链接尚未确认时保留已有 `projects`，仅在正文命名，不建立不存在的短名称链接。
 
 ## 精读时带着的问题
 

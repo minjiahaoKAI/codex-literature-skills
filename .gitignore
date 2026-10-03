@@ -12,6 +12,7 @@ __pycache__/
 work/
 outputs/
 # Private reading artifacts and recipient configuration
+**/_my_projects.md
 staging/
 acceptance/
 vault/

@@ -1,5 +1,13 @@
 # Frontmatter v2 contract
 
+Optional profile assessment fields: `project_relevance` (`强相关`, `中相关`,
+`弱相关或无关`, `未评估`), `connection_types` (a list of `主题`, `方法`, `叙事`),
+and `verdict_reason` (plain explanation). Missing legacy fields mean unassessed;
+no migration is required and no existing view depends on their presence.
+They may refresh with an explicitly requested profile assessment. Preserve
+`projects` until its links are authorized; no short-name note is inferred.
+See [project-relevance.md](project-relevance.md) for profile precedence and matching.
+
 Keep every existing field and unknown user property. `card_tier` and `read_stage` are independent: upgrading a triage card must preserve `reading`, `annotation_integrated` or `final_note`, `zotero_annotations`, `projects`, and protected content. Preserve `date_added` after first creation. Update `last_literature_update` only after a completed change.
 
 Existing required fields remain: title, short_title, authors, year, journal, doi, url, zotero_key, pdf_key, mineru_source, source_status, mineru_mode, read_stage, zotero_annotations, graphical_abstract, image_mode, card_cover, card_logic_map, card_summary, note_type, priority, projects, topics, methods, cssclasses, tags, last_literature_update and created_by.
@@ -10,7 +18,7 @@ New fields:
 study_type: observational-cohort
 publication_stage: results
 design_summary: ""
-verdict: 精读
+verdict: ""
 key_result: ""
 date_added: YYYY-MM-DD
 card_tier: full
@@ -19,6 +27,9 @@ ga_attempts: 1
 ga_qc: passed
 generation_elapsed_seconds: 0
 generation_log: "sources/mineru/<key>/graphical_abstract/generation_log.json"
+project_relevance: 未评估
+connection_types: []
+verdict_reason: ""
 ```
 
 `study_type` uses the paper-type filenames. Mixed work uses a primary design and optional `study_modifiers`. Protocols set `publication_stage: protocol` and report planned outcomes without fabricated results. A missing project file means “未评估：尚未提供课题档案”; only an inspected file with no substantive match justifies “与当前课题无直接关联”. `projects` contains actual resolvable wikilinks.

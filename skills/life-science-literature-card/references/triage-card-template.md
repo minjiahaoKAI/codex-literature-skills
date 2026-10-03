@@ -29,7 +29,9 @@ deep-reading fields. Use the frontmatter contract; `card_tier: triage`,
 
 ## 与我课题的连接
 
-从用户档案匹配，或未评估。
+按用户档案“使用说明”判断主题／方法／叙事及广／窄范围，写出相关性和具体借鉴点。
+只用摘要可确认内容；全文才可判断的借鉴点标为待核对。缺档案则未评估。
+使用可选 `project_relevance`、`connection_types`、`verdict_reason`；旧卡无需补字段。
 
 ## 是否升级
 
