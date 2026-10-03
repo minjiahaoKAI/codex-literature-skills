@@ -4,12 +4,24 @@
 
 Two standalone skills for use with Codex on your own computer:
 
-- `life-science-literature-card`: create initial reading cards, graphical abstracts, and logic maps from Zotero PDFs and full text extracted with MinerU.
+- `life-science-literature-card`: triage abstracts, create full cards, upgrade a card, process an approved Zotero batch, or regenerate only its AI cover.
 - `life-science-reading-session`: discuss a paper using its PDF, Zotero highlights, and existing card, then integrate the reading notes when requested.
 
 The skills produce Chinese-first literature notes. This page provides the setup and usage guide in English.
 
 The package does not include Zotero data, an Obsidian vault, the MinerU CLI, API tokens, or the author's local configuration. The default vault folders are `文献笔记` (literature notes), `图片资源/literature_cards` (image assets), and `sources/mineru`. You can choose other relative folders when installing a card. The optional Obsidian Bases card-wall view and CSS snippet are in `skills/life-science-literature-card/assets/card-wall/`.
+
+## v2 workflow
+
+- Quick screening creates a triage card from metadata/abstract, without MinerU or image generation. The wall uses shared study-type placeholders.
+- Full cards summarize source-backed evidence; complex papers first get a complete main-figure evidence map.
+- Before a Zotero batch, confirm its count, tier and cover setting.
+- Upgrades preserve reading/annotation state and protected user notes.
+- Cover-only regeneration reuses saved briefs and changes cover metadata/assets.
+
+Default covers use the approved pale teal journal style with Chinese labels. Text, numbers, scientific direction/evidence, unmeasured tissues and cartoon elements are hard gates. Font/area targets are soft references. Usually one generation, at most two; only a documented hard failure permits a third. Every card logs elapsed time and call count. Sourced SVGs share the palette. The installer supports backed-up updates, identity-based skipping and independent batch failures; legacy cards work without migration.
+
+See the [skill](skills/life-science-literature-card/SKILL.md), [installation/update guide](skills/life-science-literature-card/references/update-and-batch.md), and [v2 review](docs/v2-review.md). Private generated cards/covers and original paper images stay outside Git.
 
 ## Install the skills on Windows
 

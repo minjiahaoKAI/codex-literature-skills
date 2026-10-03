@@ -1,0 +1,181 @@
+{
+  "paper_title_claim": "自然日光可能改善葡萄糖调控及全身底物代谢。",
+  "primary_endpoint": {
+    "name": "平均CGM葡萄糖",
+    "result": "7.4 vs 7.8 mmol/L；P=0.368",
+    "significant": false,
+    "source": [
+      "H2",
+      "HR"
+    ]
+  },
+  "main_figures": [
+    "Fig 1",
+    "Fig 2",
+    "Fig 3",
+    "Fig 4",
+    "Fig 5"
+  ],
+  "modules": [
+    {
+      "id": "H-M1",
+      "figure": "Fig 1",
+      "level": "design",
+      "method": "随机交叉照明干预",
+      "question": "谁在什么条件下接受比较？",
+      "finding": "二型糖尿病成人13人分别接受日光与人工照明，各4.5天。",
+      "evidence_strength": "exploratory",
+      "source": [
+        "H1"
+      ],
+      "role": "design_no_endpoint"
+    },
+    {
+      "id": "H-M2",
+      "figure": "Fig 2",
+      "level": "whole_body",
+      "method": "CGM",
+      "question": "平均葡萄糖是否改变？",
+      "finding": "主要终点未见显著差异：7.4 vs 7.8 mmol/L，P=0.368；有效样本10人。",
+      "evidence_strength": "primary",
+      "source": [
+        "H2",
+        "HR"
+      ]
+    },
+    {
+      "id": "H-M3",
+      "figure": "Fig 2",
+      "level": "whole_body",
+      "method": "CGM范围分析与节律建模",
+      "question": "哪些糖代谢指标改变？",
+      "finding": "4.4–7.2 mmol/L范围内时间增加；建模昼夜振幅降低；标准3.9–10范围未达显著。",
+      "evidence_strength": "exploratory",
+      "source": [
+        "H2"
+      ],
+      "prespecification": "未核实预设，不能将所选范围泛称标准TIR或将模型振幅泛称所有血糖波动。"
+    },
+    {
+      "id": "H-M4",
+      "figure": "Fig 3",
+      "level": "whole_body",
+      "method": "间接测热与血浆代谢物",
+      "question": "底物利用是否改变？",
+      "finding": "日间脂肪氧化增加、碳水氧化下降；能量消耗及24h血浆代谢物无显著条件效应。",
+      "evidence_strength": "exploratory",
+      "source": [
+        "H3",
+        "HR"
+      ],
+      "author_role": "secondary",
+      "prespecification": "当前注册为other；初始记录未核实，按exploratory保守标记。"
+    },
+    {
+      "id": "H-M5",
+      "figure": "Fig 3",
+      "level": "whole_body",
+      "method": "混合餐试验",
+      "question": "餐后底物反应是否改变？",
+      "finding": "餐后RER下降；脂肪与碳水氧化仅趋势；葡萄糖和FFA有时间交互，非整体降低的证明。",
+      "evidence_strength": "exploratory",
+      "source": [
+        "H3",
+        "HR"
+      ],
+      "author_role": "secondary",
+      "registry_role": "secondary",
+      "prespecification": "当前注册支持次要，但初始版本不可得，时序预设未独立证实。"
+    },
+    {
+      "id": "H-M6",
+      "figure": "Fig 4",
+      "level": "circulation",
+      "method": "唾液褪黑素",
+      "question": "中央节律时相是否改变？",
+      "finding": "DLMO未见显著差异，晚间褪黑素AUC增加。",
+      "evidence_strength": "exploratory",
+      "source": [
+        "H4"
+      ]
+    },
+    {
+      "id": "H-M7",
+      "figure": "Fig 4",
+      "level": "tissue",
+      "method": "骨骼肌活检与qPCR",
+      "question": "肌肉分子钟基因是否响应？",
+      "finding": "Per1、Cry1表达增加；其他时钟基因多无显著差异。",
+      "evidence_strength": "exploratory",
+      "source": [
+        "H4",
+        "HR"
+      ],
+      "author_role": "secondary",
+      "prespecification": "注册circadian transcriptome/microarray与实际靶向qPCR不一致；按exploratory。"
+    },
+    {
+      "id": "H-M8",
+      "figure": "Fig 4",
+      "level": "cellular",
+      "method": "活检来源离体肌管Bmal1报告系统",
+      "question": "培养细胞节律是否改变？",
+      "finding": "日光条件来源肌管的时钟相位提前；周期、振幅和阻尼未见显著差异。",
+      "evidence_strength": "exploratory",
+      "source": [
+        "H4",
+        "HR"
+      ],
+      "author_role": "secondary",
+      "registry_role": "secondary",
+      "prespecification": "当前注册支持次要，初始版本未核实；不是体内时钟或介导效应的直接证明。"
+    },
+    {
+      "id": "H-M9",
+      "figure": "Fig 5",
+      "level": "circulation",
+      "method": "血清代谢/脂质组与单核细胞RNA-seq",
+      "question": "循环分子谱能否解释综合效应？",
+      "finding": "探索性分子谱有分离模式，但单项处理差异没有通过FDR。",
+      "evidence_strength": "exploratory",
+      "source": [
+        "H5"
+      ]
+    }
+  ],
+  "integrated_conclusion": "日光条件下部分糖代谢指标及脂肪利用改善，并伴随肌肉时钟响应；平均葡萄糖主要终点阴性，组学与机制联系仍属探索。 作者提出日光与骨骼肌分子钟响应及脂肪利用可能相连；本试验没有检验分子钟的介导作用。",
+  "tension": "论文标题概括代谢获益，但主要终点P=0.368，标准TIR P=0.082；特定范围、建模振幅及底物氧化支持部分获益。不能让阴性主要终点替代全文，也不能用其他发现将主要终点写成阳性。",
+  "schema_version": "2.0",
+  "sources": {
+    "H1": {
+      "doi": "10.1016/j.cmet.2025.11.006",
+      "locator": "Fig 1; Results outcome hierarchy; STAR Methods study design",
+      "claim_paraphrase": "13人完成随机交叉试验，每种照明4.5天，洗脱至少4周；CGM有效10人。"
+    },
+    "H2": {
+      "doi": "10.1016/j.cmet.2025.11.006",
+      "locator": "Fig 2B–L; Results CGM",
+      "claim_paraphrase": "主要终点平均葡萄糖7.4 vs 7.8 mmol/L，P=0.368；研究定义4.4–7.2范围内时间50.9% vs 43.3%，P=0.036；ADA 3.9–10范围P=0.082；建模昼夜振幅降低P=0.010。"
+    },
+    "H3": {
+      "doi": "10.1016/j.cmet.2025.11.006",
+      "locator": "Fig 3A–N; Results; STAR Methods indirect calorimetry",
+      "claim_paraphrase": "日间RER下降P=0.029，碳水氧化下降P=0.034，脂肪氧化增加P=0.023；EE及24h血浆葡萄糖/FFA/TAG无显著差异。MMTT RER下降，餐后脂肪/碳水氧化只有趋势。"
+    },
+    "H4": {
+      "doi": "10.1016/j.cmet.2025.11.006",
+      "locator": "Fig 4A–Q; STAR Methods biopsies/qPCR/cell culture",
+      "claim_paraphrase": "DLMO无显著差异；晚间褪黑素AUC增加。肌肉Per1/Cry1表达增加，离体培养肌管时钟相位提前0.75小时，周期/振幅无显著差异。肌肉为qPCR而非RNA-seq。"
+    },
+    "H5": {
+      "doi": "10.1016/j.cmet.2025.11.006",
+      "locator": "Fig 5; Results multi-omics; Figs S10–S11",
+      "claim_paraphrase": "血清代谢/脂质组和血液单核细胞转录组显示探索性模式，但混合模型单项比较没有通过FDR。S11主要是时间效应，不能作为日光处理效应。"
+    },
+    "HR": {
+      "locator": "protocolSection.outcomesModule; current record last posted 2023-08-15",
+      "claim_paraphrase": "平均24h血糖为主要；餐后代谢、肌肉circadian transcriptome、培养肌管列次要；全天氧化列other。初始历史版本未取得；肌肉注册方法与实际qPCR不同。",
+      "url": "https://clinicaltrials.gov/api/v2/studies/NCT05263232"
+    }
+  }
+}

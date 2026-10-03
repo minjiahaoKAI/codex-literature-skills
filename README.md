@@ -4,12 +4,24 @@
 
 这是一套供 Codex 本地使用的两个独立 skill：
 
-- `life-science-literature-card`：从 Zotero PDF 和 MinerU 全文提取生成初读卡片、图表摘要和逻辑图。
+- `life-science-literature-card`：分拣摘要、生成完整卡片、升级已有卡片、批量处理 Zotero 集合，或只重做 AI 图表摘要封面。
 - `life-science-reading-session`：围绕 PDF、Zotero 高亮和已有卡片进行精读问答，并在用户要求时整合笔记。
 
 文献笔记默认以中文为主；[英文版说明](README.en.md) 提供对应的安装与使用指南。
 
 两个 skill 不包含 Zotero 数据、Obsidian Vault、MinerU CLI、API token 或作者本机配置。默认在 Vault 中使用 `文献笔记`、`图片资源/literature_cards` 和 `sources/mineru`；可在安装卡片时选择其他相对目录。可选的 Obsidian Bases 卡片墙视图和 CSS snippet 位于 `skills/life-science-literature-card/assets/card-wall/`。
+
+## v2 日常使用
+
+- “快速看看这篇”：分拣卡，只读元数据/摘要，不调用 MinerU。
+- “做完整卡片”：全文卡，按研究类型核对证据；复杂型先画全文证据地图。
+- “处理集合中还没做卡片的论文”：先列出数量、档位和封面选项，确认后开始。
+- “升级这张分拣卡”：保留精读状态和用户记录，补齐全文与封面。
+- “只重新生成封面”：复用已保存 brief，更新封面和生成记录。
+
+默认封面采用浅色青绿的期刊图表摘要风格，中文标签。文字、科学方向、数字、证据类型、未测器官和卡通化元素是硬性检查；字号与面积只作参考。通常每张生成一次，最多两次，仅硬性失败允许第三次。每张记录耗时与调用次数。辅助 SVG 和封面共享色值，数字需核验来源。
+
+新卡有 `card_tier`、`study_type`、`verdict`、`date_added`；旧卡无需迁移仍能显示。安装器支持备份更新、跳过已有条目和批量失败隔离。详细流程见 [skill](skills/life-science-literature-card/SKILL.md)，实施验收见 [v2 review](docs/v2-review.md)。
 
 ## 在 Windows 上安装 skill
 
@@ -55,3 +67,5 @@
 - [Codex skill 的安装与分发](https://learn.chatgpt.com/docs/build-skills)
 - [MinerU Open API CLI](https://github.com/opendatalab/MinerU-Ecosystem/blob/main/cli/mineru-open-api/README.md)
 - [Obsidian Vault MCP](https://github.com/luffysolution-svg/obsidian-vault-mcp)
+
+分拣卡默认不生成封面；卡片墙使用按研究类型共享的占位图。升级为完整卡时生成专属封面。

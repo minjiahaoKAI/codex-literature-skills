@@ -1,0 +1,201 @@
+{
+  "schema_version": "2.0",
+  "layout": "simple",
+  "labels": [
+    {
+      "id": "title",
+      "text": "活动与设备温度强耦合关联较低疾病风险",
+      "role": "title",
+      "source": [
+        "C2",
+        "C3"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "who",
+      "text": "UKB中老年人",
+      "role": "section",
+      "source": [
+        "C1"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "n",
+      "text": "89,309人",
+      "role": "body",
+      "source": [
+        "C1"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "data",
+      "text": "腕部加速度与设备温度",
+      "role": "body",
+      "source": [
+        "C2"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "weak",
+      "text": "耦合较弱",
+      "role": "section",
+      "source": [
+        "C2"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "weaker",
+      "text": "昼夜联系较弱",
+      "role": "body",
+      "source": [
+        "C2"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "strong",
+      "text": "耦合较强",
+      "role": "section",
+      "source": [
+        "C2"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "stronger",
+      "text": "昼夜联系更稳定",
+      "role": "body",
+      "source": [
+        "C2"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "concept",
+      "text": "耦合：活动量与设备温度的昼夜联系",
+      "role": "body",
+      "source": [
+        "C2"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "phase",
+      "text": "强耦合不等于同相",
+      "role": "body",
+      "source": [
+        "C2"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "unit",
+      "text": "强度每升高一标准差",
+      "role": "body",
+      "source": [
+        "C3"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "t2d",
+      "text": "二型糖尿病风险↓ HR 0.84",
+      "role": "finding",
+      "source": [
+        "C3"
+      ],
+      "status": "changed"
+    },
+    {
+      "id": "hf",
+      "text": "心力衰竭风险↓ HR 0.85",
+      "role": "finding",
+      "source": [
+        "C3"
+      ],
+      "status": "changed"
+    },
+    {
+      "id": "follow",
+      "text": "前瞻随访7.83年",
+      "role": "footer",
+      "source": [
+        "C3"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "evidence",
+      "text": "观察性关联",
+      "role": "footer",
+      "source": [
+        "C3"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "conceptual",
+      "text": "概念对照；非分组效应",
+      "role": "body",
+      "source": [
+        "C2",
+        "C3"
+      ],
+      "status": "neutral"
+    }
+  ],
+  "panels": [
+    {
+      "id": "P0",
+      "position": "context",
+      "kind": "context",
+      "description": "Sourced context; flat scientific schematic and exact labels only",
+      "label_ids": [
+        "who",
+        "n",
+        "data",
+        "weak",
+        "weaker",
+        "strong",
+        "stronger",
+        "concept",
+        "phase",
+        "unit",
+        "t2d",
+        "hf",
+        "follow",
+        "evidence",
+        "conceptual"
+      ],
+      "icons": []
+    }
+  ],
+  "connectors": [],
+  "numbers_in_image": [
+    {
+      "number_id": "N1",
+      "label_id": "n"
+    },
+    {
+      "number_id": "N2",
+      "label_id": "follow"
+    },
+    {
+      "number_id": "N3",
+      "label_id": "t2d"
+    },
+    {
+      "number_id": "N4",
+      "label_id": "hf"
+    }
+  ],
+  "label_budget": 16,
+  "text_overlay": false,
+  "focal_point": "central findings",
+  "reference_images": []
+}
