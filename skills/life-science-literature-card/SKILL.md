@@ -52,6 +52,8 @@ An existing complete source extraction can be reused without another upload.
    method/narrative must name a transferable operation and target task. Strong
    relevance alone does not justify 精读: require a direct current question or
    exceptional short-term reuse. Uncertain gates stay unestablished.
+   Display connections as one assessment line, one reason sentence and at most
+   two rows in three columns; collapse detailed limitations and gate records.
    Use [my-projects-template.md](references/my-projects-template.md) if absent;
    missing profile means “未评估：尚未提供课题档案”, never invented projects.
 6. Draft from [initial-card-template.md](references/initial-card-template.md) or

@@ -82,8 +82,14 @@ mean unassessed, not unrelated. These are agent-generated assessment fields;
 `projects`, user reading state and user records remain protected on normal update.
 Keep per-project detail in the body, not a complex nested YAML object.
 
-In “与我课题的连接”, report overall grade and verdict rationale, then rows for
-project / type / specific reuse / source and profile basis / limitation. A relevance
+In “与我课题的连接”, show one line for relevance/verdict, one sentence of
+reason, and three columns (project link / connection type / concrete reusable
+point), at most two data rows. Combine types per project and show the most useful
+connections; retain all justified `projects` links. With no match, use one row
+with no project link and “无”. Put detailed sources, scope, transfer limits,
+rejected upgrades and gate JSON in a default-collapsed
+`> [!info]- 判断依据与迁移限制` callout or a private generation log. Escape
+wikilink alias pipes as `\|` in Markdown tables. Keep the full rationale auditable. A relevance
 refresh changes this section, those optional fields and the first-screen connection
 and verdict display. It preserves every scientific section, asset, source, GA
 attempt/time log, reading field, user region and existing project link. Back up the
