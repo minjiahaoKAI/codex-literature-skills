@@ -93,6 +93,8 @@ def qc_decision(visual,qc):
             'review_method':qc.get('review_method','unspecified')}
 
 def main():
+    from _cli_io import utf8_stdio
+    utf8_stdio()
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--story',type=Path,required=True);p.add_argument('--visual',type=Path,required=True);p.add_argument('--evidence',type=Path);p.add_argument('--qc',type=Path)
     a=p.parse_args();load=lambda f:json.loads(f.read_text(encoding='utf-8'))
     v=load(a.visual);r=validate(load(a.story),v,load(a.evidence) if a.evidence else None)

@@ -38,6 +38,8 @@ def finish(log,selected_attempt=None):
     log['selected_attempt']=chosen['number'] if chosen else None;log['ga_qc']=chosen['qc']['ga_qc'] if chosen else 'not_generated'
     return log
 def main():
+    from _cli_io import utf8_stdio
+    utf8_stdio()
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=['start','attempt','review','finish','summary']);p.add_argument('--log',type=Path);p.add_argument('--key');p.add_argument('--tier',choices=['full','triage']);p.add_argument('--operation',default='create');p.add_argument('--prompt',type=Path);p.add_argument('--image',type=Path);p.add_argument('--visual',type=Path);p.add_argument('--qc',type=Path);p.add_argument('--logs',type=Path,nargs='*');a=p.parse_args()
     load=lambda f:json.loads(f.read_text(encoding='utf-8'))
     if a.action=='summary':

@@ -77,10 +77,14 @@ def verify(source,artifacts,ledger=None):
         limitation='Textual/normalized matching and source-checked arithmetic; scientific semantic correctness requires the separate review.')
 
 def main():
+    from _cli_io import utf8_stdio
+    utf8_stdio()
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--source',type=Path,required=True);p.add_argument('--card',type=Path,required=True);p.add_argument('--story',type=Path);p.add_argument('--visual',type=Path);p.add_argument('--aux',nargs='*',type=Path,default=[]);p.add_argument('--ledger',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
     paths=[x for x in [a.story,a.visual,*a.aux] if x]
     artifacts=[(str(a.card),'md',a.card.read_text(encoding='utf-8'))]+[(str(x),'json',json.loads(x.read_text(encoding='utf-8'))) for x in paths]
     r=verify(a.source.read_text(encoding='utf-8'),artifacts,json.loads(a.ledger.read_text(encoding='utf-8')) if a.ledger else None)
+    r['card_sha256']=hashlib.sha256(a.card.read_bytes()).hexdigest()
+    r['artifact_sha256']={str(x):hashlib.sha256(x.read_bytes()).hexdigest() for x in [a.card,*paths]}
     a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps({k:r[k] for k in ['status','quantities','not_found','counts']},ensure_ascii=False))
     if r['status']!='pass':raise SystemExit(1)
 if __name__=='__main__':main()
