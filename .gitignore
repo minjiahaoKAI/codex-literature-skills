@@ -11,3 +11,22 @@ __pycache__/
 *.pyc
 work/
 outputs/
+# Private reading artifacts and recipient configuration
+staging/
+acceptance/
+vault/
+**/.obsidian/
+**/sources/mineru/
+**/sources/literature/
+**/graphical_abstract/
+**/_backup/
+**/style-refs/
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.svg
+!skills/**/assets/*.svg
+**/*token*
+**/*credentials*
+!skills/**/references/setup.md
