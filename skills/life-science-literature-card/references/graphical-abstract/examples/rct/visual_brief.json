@@ -1,0 +1,341 @@
+{
+  "schema_version": "2.0",
+  "layout": "complex",
+  "labels": [
+    {
+      "id": "title",
+      "text": "日光提示糖代谢与脂肪利用获益",
+      "role": "title",
+      "source": [
+        "H2",
+        "H3"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "design",
+      "text": "随机交叉试验",
+      "role": "section",
+      "source": [
+        "H1"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "who",
+      "text": "二型糖尿病成人13人",
+      "role": "body",
+      "source": [
+        "H1"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "conditions",
+      "text": "自然日光／人工照明",
+      "role": "body",
+      "source": [
+        "H1"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "duration",
+      "text": "每种条件4.5天",
+      "role": "body",
+      "source": [
+        "H1"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "m1",
+      "text": "全身·连续血糖监测",
+      "role": "method",
+      "source": [
+        "H2"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "f1",
+      "text": "范围内时间↑7.6个百分点",
+      "role": "finding",
+      "source": [
+        "H2"
+      ],
+      "status": "changed"
+    },
+    {
+      "id": "detail",
+      "text": "4.4–7.2 mmol/L；CGM n=10",
+      "role": "body",
+      "source": [
+        "H2"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "f1b",
+      "text": "建模昼夜振幅↓",
+      "role": "finding",
+      "source": [
+        "H2"
+      ],
+      "status": "changed"
+    },
+    {
+      "id": "m2",
+      "text": "全身·间接测热",
+      "role": "method",
+      "source": [
+        "H3"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "f2",
+      "text": "脂肪氧化↑；碳水氧化↓",
+      "role": "finding",
+      "source": [
+        "H3"
+      ],
+      "status": "changed"
+    },
+    {
+      "id": "m3",
+      "text": "循环·血液组学",
+      "role": "method",
+      "source": [
+        "H5"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "f3",
+      "text": "差异未通过FDR校正",
+      "role": "finding",
+      "source": [
+        "H5"
+      ],
+      "status": "unconfirmed"
+    },
+    {
+      "id": "m4",
+      "text": "组织·肌肉活检qPCR",
+      "role": "method",
+      "source": [
+        "H4"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "f4",
+      "text": "Per1、Cry1表达↑",
+      "role": "finding",
+      "source": [
+        "H4"
+      ],
+      "status": "changed"
+    },
+    {
+      "id": "m5",
+      "text": "细胞·离体肌管培养",
+      "role": "method",
+      "source": [
+        "H4"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "f5",
+      "text": "分子钟相位提前",
+      "role": "finding",
+      "source": [
+        "H4"
+      ],
+      "status": "changed"
+    },
+    {
+      "id": "integrate",
+      "text": "整合解释",
+      "role": "section",
+      "source": [
+        "H1",
+        "H3",
+        "H4"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "hypothesis",
+      "text": "假说",
+      "role": "body",
+      "source": [
+        "H3",
+        "H4"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "path1",
+      "text": "日光",
+      "role": "body",
+      "source": [
+        "H1"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "path2",
+      "text": "骨骼肌分子钟",
+      "role": "body",
+      "source": [
+        "H4"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "path3",
+      "text": "底物利用偏向脂肪",
+      "role": "body",
+      "source": [
+        "H3"
+      ],
+      "status": "neutral"
+    },
+    {
+      "id": "primary",
+      "text": "主要终点·平均血糖未见显著差异",
+      "role": "footer",
+      "source": [
+        "H2"
+      ],
+      "status": "null"
+    },
+    {
+      "id": "evidence",
+      "text": "干预结果；机制待验证",
+      "role": "footer",
+      "source": [
+        "H1",
+        "H4"
+      ],
+      "status": "neutral"
+    }
+  ],
+  "panels": [
+    {
+      "id": "P0",
+      "position": "design",
+      "kind": "design",
+      "description": "Sourced design; flat scientific schematic and exact labels only",
+      "label_ids": [
+        "design",
+        "who",
+        "conditions",
+        "duration"
+      ],
+      "icons": []
+    },
+    {
+      "id": "P1",
+      "position": "evidence",
+      "kind": "evidence",
+      "description": "Five independent parallel rows: CGM, calorimetry, blood omics, muscle biopsy and cultured myotubes. No row-to-row arrows.",
+      "label_ids": [
+        "m1",
+        "f1",
+        "detail",
+        "f1b",
+        "m2",
+        "f2",
+        "m3",
+        "f3",
+        "m4",
+        "f4",
+        "m5",
+        "f5"
+      ],
+      "icons": []
+    },
+    {
+      "id": "P2",
+      "position": "integration",
+      "kind": "integration",
+      "description": "One typography-only dashed hypothesis box: daylight to muscle molecular clock to fat utilization; no additional organ illustration.",
+      "label_ids": [
+        "integrate",
+        "hypothesis",
+        "path1",
+        "path2",
+        "path3"
+      ],
+      "icons": []
+    },
+    {
+      "id": "P3",
+      "position": "footer",
+      "kind": "footer",
+      "description": "Sourced footer; flat scientific schematic and exact labels only",
+      "label_ids": [
+        "primary",
+        "evidence"
+      ],
+      "icons": []
+    }
+  ],
+  "connectors": [
+    {
+      "from": "path1",
+      "to": "path2",
+      "semantic": "hypothesis",
+      "style": "dashed",
+      "source": [
+        "H4"
+      ],
+      "label": "假说"
+    },
+    {
+      "from": "path2",
+      "to": "path3",
+      "semantic": "hypothesis",
+      "style": "dashed",
+      "source": [
+        "H3",
+        "H4"
+      ],
+      "label": "机制待验证"
+    }
+  ],
+  "numbers_in_image": [
+    {
+      "number_id": "N1",
+      "label_id": "who"
+    },
+    {
+      "number_id": "N2",
+      "label_id": "duration"
+    },
+    {
+      "number_id": "N3",
+      "label_id": "detail"
+    },
+    {
+      "number_id": "N4",
+      "label_id": "detail"
+    },
+    {
+      "number_id": "N5",
+      "label_id": "detail"
+    },
+    {
+      "number_id": "N6",
+      "label_id": "f1"
+    }
+  ],
+  "label_budget": 24,
+  "text_overlay": false,
+  "focal_point": "central findings",
+  "reference_images": []
+}

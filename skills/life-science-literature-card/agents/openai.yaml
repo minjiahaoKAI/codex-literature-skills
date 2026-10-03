@@ -1,4 +1,4 @@
 interface:
   display_name: "Life Science Literature Card"
-  short_description: "Generate Obsidian literature cards from Zotero papers."
-  default_prompt: "Generate an Obsidian literature card for the provided paper title, DOI, Zotero item, or PDF."
+  short_description: "Triage, create, upgrade cards and refresh AI covers."
+  default_prompt: "Create a source-checked literature card, triage a paper, upgrade a triage card, process an approved Zotero batch, or regenerate only the cover. Preserve reading notes and apply house-style-v1 hard QC and attempt limits."

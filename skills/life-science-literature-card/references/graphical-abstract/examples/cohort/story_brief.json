@@ -1,0 +1,110 @@
+{
+  "schema_version": "2.0",
+  "paper_type": "observational-cohort",
+  "card_tier": "full",
+  "complexity": "simple",
+  "publication_stage": "results",
+  "one_line_story": "UKB中老年人腕部活动与设备温度的昼夜耦合较强，与较低的二型糖尿病和心力衰竭发病风险相关；这是连续指标的观察性关联。",
+  "key_concept_plain": "耦合指活动量与设备温度的昼夜变化有多稳定地联系在一起；强耦合不等于同时升降。",
+  "finding_shape": "contrast",
+  "sources": {
+    "C1": {
+      "doi": "10.1002/advs.76217",
+      "locator": "Results 2.1 / Table S1",
+      "claim_paraphrase": "分析样本89,309人；中老年UK Biobank人群。"
+    },
+    "C2": {
+      "doi": "10.1002/advs.76217",
+      "locator": "Results 2.2 / Fig.1",
+      "claim_paraphrase": "中位7天腕部加速度和设备温度。M24表示昼夜耦合强度；稳定关系不要求同相。相位偏离D24是另一指标。"
+    },
+    "C3": {
+      "doi": "10.1002/advs.76217",
+      "locator": "Results 2.3 / Fig.4 / Table S2",
+      "claim_paraphrase": "疾病随访中位7.83年。M24每升高1 SD，2型糖尿病HR0.84，95%CI0.81–0.87；心衰HR0.85，95%CI0.79–0.91；抑郁HR0.94，95%CI0.90–0.98。多变量调整后的观察性关联。"
+    },
+    "C4": {
+      "doi": "10.1002/advs.76217",
+      "locator": "Figs 2–3; Results 2.2–2.3",
+      "claim_paraphrase": "Fig2六类疾病病例对照节律差异；Fig3扫描456结局，M24/M12/D24分别有34/23/7个FDR显著结局。"
+    }
+  },
+  "main_findings": [
+    {
+      "id": "F1",
+      "finding": "M24每标准差较高与二型糖尿病HR0.84关联",
+      "direction": "decrease",
+      "relation": "association",
+      "status": "associated",
+      "source": [
+        "C3"
+      ]
+    },
+    {
+      "id": "F2",
+      "finding": "M24每标准差较高与心衰HR0.85关联",
+      "direction": "decrease",
+      "relation": "association",
+      "status": "associated",
+      "source": [
+        "C3"
+      ]
+    }
+  ],
+  "numbers_allowed": [
+    {
+      "id": "N1",
+      "value": "89309",
+      "unit": "",
+      "source": [
+        "C1"
+      ]
+    },
+    {
+      "id": "N2",
+      "value": "7.83",
+      "unit": "年",
+      "source": [
+        "C3"
+      ]
+    },
+    {
+      "id": "N3",
+      "value": "0.84",
+      "unit": "",
+      "source": [
+        "C3"
+      ]
+    },
+    {
+      "id": "N4",
+      "value": "0.85",
+      "unit": "",
+      "source": [
+        "C3"
+      ]
+    }
+  ],
+  "must_not_show": [
+    "unmeasured organs/tissues",
+    "unvalidated mediation shown as solid path",
+    "dark solid banners",
+    "huge title/footer",
+    "realistic gradients",
+    "unlabeled icon",
+    "data-like charts"
+  ],
+  "outcomes_named": [],
+  "hero_contrast": {
+    "side_a": {
+      "label": "耦合较弱",
+      "description": "昼夜联系较弱",
+      "outcome": "参照连续强度"
+    },
+    "side_b": {
+      "label": "耦合较强",
+      "description": "昼夜联系更稳定",
+      "outcome": "较低的糖尿病/心衰风险"
+    }
+  }
+}

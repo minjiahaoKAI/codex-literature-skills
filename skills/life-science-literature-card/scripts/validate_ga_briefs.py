@@ -63,12 +63,14 @@ def validate(story,visual,evidence=None):
     if story['card_tier']=='triage' and visual.get('numbers_in_image'):raise ValueError('Triage cover must omit scientific numbers')
     panel_ids={p['id'] for p in visual['panels']}
     central={p['id'] for p in visual['panels'] if p.get('kind')=='evidence'}
+    central|={i for p in visual['panels'] if p.get('kind')=='evidence' for i in p['label_ids']}
     for p in visual['panels']:
         if any(i not in labels for i in p['label_ids']):raise ValueError('Unknown panel label')
         for icon in p.get('icons',[]):
             if icon.get('label_id') not in p['label_ids']:raise ValueError('Unlabeled semantic icon')
             refs(icon.get('source'),sources,'icon '+icon['name'])
     for c in visual.get('connectors',[]):
+        if c['from'] not in panel_ids|labels.keys() or c['to'] not in panel_ids|labels.keys():raise ValueError('Unknown connector endpoint')
         if c['from'] in central and c['to'] in central and visual['layout']=='complex':raise ValueError('Arrow between parallel evidence modules')
         if c['semantic'] not in {'workflow','temporal','association','causal_evidence','hypothesis'}:raise ValueError('Unknown connector meaning')
         refs(c.get('source'),sources,'connector')
