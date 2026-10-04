@@ -12,6 +12,10 @@ formulas:
   project_group: 'if(note.projects, list(note.projects).join(" · "), "未关联")'
   week_start: 'today() - (duration("1d") * (number(today().format("E")) - 1))'
 properties:
+  note.journal:
+    displayName: 期刊
+  note.year:
+    displayName: 年份
   note.card_summary:
     displayName: 一句话
   formula.verdict_display:
@@ -26,15 +30,15 @@ views:
   - type: cards
     name: 全部
     order:
-      - file.name
-      - note.card_summary
+      - note.journal
+      - note.year
       - formula.verdict_display
-      - formula.type_display
+      - note.card_summary
     sort:
       - property: formula.added
         direction: DESC
     image: formula.display_cover
-    cardSize: 400
+    cardSize: 260
     imageAspectRatio: 0.625
     imageFit: contain
   - type: cards
@@ -44,15 +48,15 @@ views:
         - note.verdict == "精读"
         - note.read_stage != "final_note"
     order:
-      - file.name
-      - note.card_summary
+      - note.journal
+      - note.year
       - formula.verdict_display
-      - formula.type_display
+      - note.card_summary
     sort:
       - property: formula.added
         direction: DESC
     image: formula.display_cover
-    cardSize: 400
+    cardSize: 260
     imageAspectRatio: 0.625
     imageFit: contain
   - type: cards
@@ -61,16 +65,15 @@ views:
       property: formula.project_group
       direction: ASC
     order:
-      - file.name
-      - note.card_summary
+      - note.journal
+      - note.year
       - formula.verdict_display
-      - formula.type_display
-      - note.projects
+      - note.card_summary
     sort:
       - property: formula.added
         direction: DESC
     image: formula.display_cover
-    cardSize: 400
+    cardSize: 260
     imageAspectRatio: 0.625
     imageFit: contain
   - type: cards
@@ -80,14 +83,14 @@ views:
         - formula.added >= formula.week_start
         - formula.added <= now()
     order:
-      - file.name
-      - note.card_summary
+      - note.journal
+      - note.year
       - formula.verdict_display
-      - formula.type_display
+      - note.card_summary
     sort:
       - property: formula.added
         direction: DESC
     image: formula.display_cover
-    cardSize: 400
+    cardSize: 260
     imageAspectRatio: 0.625
     imageFit: contain
