@@ -6,6 +6,12 @@ import build_logic_map_svg as logic
 import build_key_results as results
 
 class NumbersAndSVGTests(unittest.TestCase):
+    def test_source_filenames_are_not_results_but_inline_effects_still_are(self):
+        card='来源 `sources/mineru/ABC/Paper - 2026 - extract-320574.md`；结果 `HR 0.84`。'
+        r=verify('HR 0.84',[('card','md',card)])
+        self.assertEqual(r['quantities'],1)
+        self.assertEqual(r['not_found'],0)
+        self.assertEqual(verify('HR 0.84',[('card','md',card.replace('0.84','0.17'))])['not_found'],1)
     def test_spaced_mineru_math_and_attached_hr(self):
         src=r'Glucose $7 . 4$, range $5 0 . 9\%$ versus $4 3 . 3\%$, $p=0 . 0 3 6$. HR 0.84.'
         card='血糖7.4；范围50.9对43.3；p=0.036；HR0.84。DOI：10.1002/advs.76217。'
