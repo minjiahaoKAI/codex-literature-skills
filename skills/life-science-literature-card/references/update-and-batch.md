@@ -53,6 +53,22 @@ the real run backs up before changing metadata and leaves body unchanged. Legacy
 unknown generation count/time is null; legacy GA QC is unverified, not passed.
 The card wall works without migration through fallback formulas.
 
+To repair empty added dates, first run:
+
+```powershell
+python scripts/fill_card_dates.py --vault $vaultPath --zotero-db $zoteroDbPath --report $dateReport
+```
+
+Review the planned dates and their sources before adding `--apply` within the
+authorized Vault. The helper opens Zotero read-only, fills only empty dates and
+backs up changed notes. For a copied test Vault, pass `--fallback-file-dates` with
+a private JSON map of Vault-relative note paths to original creation dates.
+
+For a v2.1 body-only update, retain the selected cover, logic SVG and GA records.
+Use cached full text, preserve the calibrated project judgement and reading notes,
+then verify the complete incoming note's numbers before installation. This update
+does not start cover generation. Triage bodies retain their short structure.
+
 Default no-cover triage installs the shared type SVG set on first use. Reusing
 identical placeholders adds no work to the write plan; they are not embedded in
 the body. Upgrading with --update produces the dedicated full PNG and preserves

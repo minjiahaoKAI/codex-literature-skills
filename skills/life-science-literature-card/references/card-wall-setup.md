@@ -12,7 +12,10 @@ versioned Base/entry name and update its embed. Never overwrite silently or copy
 another user's `.obsidian` configuration. Obtain required filesystem permission.
 Enable both snippets in Settings → Appearance and open the Base/entry note.
 
-Check the four views, summary/verdict/type under the covers, full and legacy
+Check the four views at a normal desktop width: three or four columns, with
+journal/year/verdict/summary under the covers. Sparse filters keep normal card
+width; use real matching records rather than inventing cards to fill a row.
+Check full and legacy
 cards, image contain fit, light/dark themes and a narrow note pane. Images use `formula.display_cover`: an existing card_cover takes priority;
 otherwise a study-type SVG is shown. Missing or unknown type uses other.svg.
 Old cards need no migration.

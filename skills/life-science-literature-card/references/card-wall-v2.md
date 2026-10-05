@@ -1,4 +1,4 @@
-# Card wall v2
+# Card wall v2.1
 
 Install the bundled Base/entry note and both CSS snippets through an authorized
 copy, comparing existing files first. Do not copy a Vault's other settings.
@@ -13,11 +13,22 @@ days. Legacy verdict/type display 未评估/未分类. No migration required. Ba
 are excluded. Card imageFit is contain and target H/W ratio is 0.625 for 16:10
 covers; verify actual native rendered dimensions in the acceptance Vault.
 
-At native size inspect cover labels/science. At 400px thumbnail inspect only
-structure. Below image show card_summary, verdict and study_type. CSS is scoped
+Each native Cards view uses `cardSize: 260`, targeting three or four columns at
+normal desktop widths. Sparse views retain that size instead of stretching a
+single cover. Grouped views may have fewer items per group. Below the cover show
+only journal, year, verdict and card_summary (at most two lines). Other properties
+remain available through the view's property settings; CSS does not hide them.
+At native size inspect cover labels/science; at thumbnail size inspect only
+structure. CSS is scoped
 to literature-note or the Literature_Card_Wall tab and supports light/dark and
 responsive grids. Full-card cover height is capped to keep the verdict visible
 on the first screen.
+
+For empty `date_added`, dry-run `scripts/fill_card_dates.py` against the selected
+Vault and a read-only Zotero database. Prefer Zotero's added timestamp; otherwise
+use the original note creation date. When checking a copied Vault, supply original
+creation dates with `--fallback-file-dates`. Preserve existing dates. Apply only
+within authorized scope; the helper backs up each changed note.
 
 If a card is missing, check note_type, card_cover path, indexing and note folder
 before changing the Base. Filesystem checks and browser simulations do not prove

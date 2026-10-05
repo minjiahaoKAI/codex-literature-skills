@@ -34,6 +34,9 @@ def tokens(t):return [(m.group(),key(m.group()),m.start()) for m in TOKEN.findit
 def strip_nonresults(t):
     t=re.sub(r'^---\s*\n.*?\n---\s*\n','',t,flags=re.S)
     t=re.sub(r'!?\[\[.*?\]\]|!\[.*?\]\(.*?\)|https?://\S+|zotero://\S+','',t)
+    # Inline source paths in protected legacy notes are identifiers, not results.
+    # Keep scientific inline code (e.g. `HR 0.84`) available for verification.
+    t=re.sub(r'`(?:sources[\\/]|图片资源[\\/]|[A-Za-z]:[\\/])[^`\n]+\.(?:md|json|png|jpg|svg|pdf)`','',t)
     t=re.sub(r'(?<!\d)10\.\d{4,9}/[^\s<>"）)；;，,]+','',t)
     t=re.sub(r'〔.*?〕|\b(?:Fig(?:ure)?|Table|Supplementary Fig(?:ure)?)\.?\s*\d+[A-Za-z]?','',t)
     t=re.sub(r'^\s*\d+\.\s+','',t,flags=re.M)

@@ -3,10 +3,10 @@ name: life-science-literature-card
 description: "Create and improve Chinese-first life-science Obsidian literature cards: make a full paper card, triage an abstract, batch-process a Zotero collection, upgrade a triage card, or regenerate only its graphical-abstract cover. Use source-checked evidence summaries, study-specific appraisal and AI scientific covers. Resolve the recipient's local Zotero/PDF/MinerU sources first; active deep-reading Q&A belongs to life-science-reading-session."
 ---
 
-# Life Science Literature Card v2
+# Life Science Literature Card v2.1
 
 Help the reader decide in the first screen whether to read closely, then explain
-the study's evidence in three to five minutes. Chinese first; retain English
+the paper's question, concepts, narrative, methods and evidence. Chinese first; retain English
 method/gene names, avoid generic praise, and distinguish facts from interpretation.
 
 ## Route the request
@@ -17,6 +17,9 @@ method/gene names, avoid generic praise, and distinguish facts from interpretati
   tier and cover setting, wait for that scope confirmation, then process.
 - Upgrade → full preparation and new full cover, preserving user reading state.
 - “只重新生成封面” → cover-only route below, without rewriting the card body.
+- “只改完整卡正文” → reuse cached full text and existing cover/GA records;
+  explain concepts, narrative and methods, preserve project judgement and reading
+  notes, and verify the rewritten numbers. Skip the cover workflow entirely.
 - “只更新课题连接 / 阅读判断” → read the current profile and update its connection
   section, relevance metadata and verdict display only; preserve science, sources,
   covers, GA logs, reading records and existing project links. Stage for review.
@@ -60,10 +63,15 @@ An existing complete source extraction can be reused without another upload.
    missing profile means “未评估：尚未提供课题档案”, never invented projects.
 6. Draft from [initial-card-template.md](references/initial-card-template.md) or
    [triage-card-template.md](references/triage-card-template.md). Full cover first, then
-   one-line conclusion/verdict, study profile, key results and original evidence,
-   unusual methods, source-backed credibility checks, project connections and
-   concrete reading questions. Collapse design, concepts, logic and source detail.
-7. Attach a locator to every key conclusion/number (`〔Fig 2b〕`, `〔Table 3〕`).
+   a short integrated conclusion/assessment, study profile and quick judgment,
+   3–5 expanded concepts, an expanded narrative followed by a logic SVG and
+   optional collapsed steps, separate explained methods, an evidence table with
+   original figure, innovation/limitations, collapsed type-specific credibility,
+   compact project connections, 5–7 questions and collapsed sources.
+   Write complete, readable sentences; explain each method's definition, purpose
+   in this paper and points to check. Keep triage short and unchanged.
+7. Put source locators mainly in the evidence table; append locators to key numbers
+   outside it. Avoid citation tags after every explanatory sentence.
    Reporting checklists are information prompts, not quality scores. “Not reported”
    does not mean “not done”. Never call association a causal effect or a null
    test equality. Keep strength of rhythm coupling separate from phase.
@@ -136,6 +144,11 @@ triage card has empty image links, `image_mode: disabled`, `ga_attempts: 0` and
 `ga_qc: not_generated`. Shared placeholders are display-only; never store them
 as card_cover or graphical_abstract. The installer copies bundled type SVGs once.
 Record triage timing in `sources/literature/<key>/generation_log.json`.
+For the card wall, use native Cards `cardSize: 260` as the starting size for
+3–4 columns in ordinary windows; verify actual available pane width. Show only
+journal, year, verdict and a truncated summary by default; other properties remain
+selectable in Obsidian. Fill empty date_added using `fill_card_dates.py` from
+read-only Zotero dateAdded, then original file creation date; preserve nonempty dates.
 
 Read [update-and-batch.md](references/update-and-batch.md). Installer supports
 dry-run, skip-existing, update, cover-only and batch with per-card failure isolation.
