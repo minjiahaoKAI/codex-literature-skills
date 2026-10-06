@@ -9,6 +9,15 @@ from _frontmatter import split,value,merge,stamp
 from validate_ga_briefs import qc_decision
 from verify_card_numbers import verify
 
+BACKUP_DIRECTORY=re.compile(r'(?:^|[._\s-])backups?(?:$|[._\s-])|备份',re.I)
+
+def live_card_files(root):
+    # Prune backups before descent; historical cards must not count as identities.
+    for directory,folders,files in os.walk(root):
+        folders[:]=[name for name in folders if not BACKUP_DIRECTORY.search(name)]
+        for name in files:
+            if name.lower().endswith('.md'):yield Path(directory)/name
+
 def relative_folder(v):
     n=v.replace('\\','/');p=PurePosixPath(n)
     if not n or n.startswith('/') or ':' in n or any(x in {'.','..'} for x in n.split('/')):raise ValueError('Unsafe vault-relative folder')
@@ -60,7 +69,7 @@ def run(args):
     existing=[]
     note_root=guarded(vault/nf,vault)
     if note_root.exists():
-        for p in note_root.rglob('*.md'):
+        for p in live_card_files(note_root):
             try:
                 ef,_=split(p.read_text(encoding='utf-8'))
                 if value(ef,'zotero_key')==key and value(ef,'note_type')=='literature-card':existing.append(p)

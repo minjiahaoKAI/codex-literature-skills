@@ -46,6 +46,35 @@ User edits outside generated region
     def test_unprotected_manual_change_conflicts(self):
         installer.run(self.args);dest=self.v/'文献笔记/note.md';dest.write_text(dest.read_text(encoding='utf-8').replace('Original text','Hand-edited prose'),encoding='utf-8');self.args.update=True
         with self.assertRaises(ValueError):installer.run(self.args)
+    def test_card_with_existing_backups_can_update_again(self):
+        installer.run(self.args);dest=self.v/'文献笔记/note.md'
+        self.args.update=True
+        self.note.write_text(self.note.read_text(encoding='utf-8').replace('Original text','First revision'),encoding='utf-8')
+        first=installer.run(self.args)
+        old_backup=Path(first['backup']);self.assertTrue((old_backup/'文献笔记/note.md').is_file())
+        # Also ignore customary backup names at any nesting depth.
+        copies=[]
+        for name in ['_backups','Backups','backup-20261006','notes_backup','备份-20261006']:
+            copy=self.v/'文献笔记/nested'/name/'note.md';copy.parent.mkdir(parents=True)
+            shutil.copy2(dest,copy);copies.append(copy)
+        old_hashes={p:installer.sha(p) for p in copies}
+        backup_hashes=installer.tree_hash(old_backup)
+        self.note.write_text(self.note.read_text(encoding='utf-8').replace('First revision','Second revision'),encoding='utf-8')
+        self.args.dry_run=True;before=installer.tree_hash(self.v)
+        self.assertEqual(installer.run(self.args)['action'],'update')
+        self.assertEqual(installer.tree_hash(self.v),before)
+        self.args.dry_run=False;result=installer.run(self.args)
+        self.assertEqual(result['status'],'updated');self.assertEqual(Path(result['note']),dest)
+        self.assertIn('Second revision',dest.read_text(encoding='utf-8'))
+        self.assertIn('User edits outside',dest.read_text(encoding='utf-8'))
+        self.assertEqual(installer.tree_hash(old_backup),backup_hashes)
+        self.assertEqual({p:installer.sha(p) for p in copies},old_hashes)
+        self.assertTrue((Path(result['backup'])/'文献笔记/note.md').is_file())
+        # Two live cards remain a real conflict, even when backups also exist.
+        duplicate=self.v/'文献笔记/live/duplicate.MD';duplicate.parent.mkdir()
+        shutil.copy2(dest,duplicate);before=installer.tree_hash(self.v)
+        with self.assertRaisesRegex(ValueError,'Multiple cards share identity'):installer.run(self.args)
+        self.assertEqual(installer.tree_hash(self.v),before)
     def test_update_with_new_cover_filename_backs_up_old_cover(self):
         installer.run(self.args);old=(self.v/'图片资源/literature_cards/cover.png').read_bytes()
         new=self.base/'new_cover.png';new.write_bytes(self.png.read_bytes());self.args.graphical_abstract=new

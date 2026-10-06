@@ -29,8 +29,13 @@ report still needs scientific semantic review of endpoint/unit/model/direction.
 ## Identity and update
 
 `--skip-existing` skips by `zotero_key` within the selected notes folder.
-Duplicate identities report conflict. Normal installs refuse a different
-existing note/resource. `--update` merges generated content only when a baseline
+Duplicate identities report conflict.
+Identity lookup skips backup directories at any depth: `backup` / `backups`
+tokens (case-insensitive, bounded by spaces, dots, underscores or hyphens),
+including `_backup`, dated or prefixed variants, and names containing `备份`.
+Backup contents remain untouched; duplicate live cards still report conflict.
+Normal installs refuse a different existing note/resource. `--update` merges
+generated content only when a baseline
 generated-region hash is intact, preserves outside text and protected user
 regions, and preserves reading/annotation state, projects, priority, date_added
 and unknown metadata. Legacy unmarked or edited generated text reports conflict;
