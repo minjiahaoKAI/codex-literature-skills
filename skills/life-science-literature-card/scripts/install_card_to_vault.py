@@ -7,6 +7,7 @@ from datetime import datetime,timezone
 from pathlib import Path,PurePosixPath
 from _frontmatter import split,value,merge,stamp
 from validate_ga_briefs import qc_decision
+from verify_card_numbers import verify
 
 def relative_folder(v):
     n=v.replace('\\','/');p=PurePosixPath(n)
@@ -32,6 +33,17 @@ def copy_checked(src,dst):
     else:
         shutil.copy2(src,dst)
         if sha(src)!=sha(dst):raise RuntimeError('File hash mismatch')
+
+def verify_final_numbers(args,report,text):
+    source=args.number_source or report.get('source_file')
+    if not source or not Path(source).is_file():raise ValueError('Final numeric verification requires source_file or --number-source')
+    ledger_path=args.number_ledger or report.get('ledger_file')
+    ledger=json.loads(Path(ledger_path).read_text(encoding='utf-8')) if ledger_path else None
+    result=verify(Path(source).read_text(encoding='utf-8'),[('final_note','md',text)],ledger)
+    if result['status']!='pass':
+        raise ValueError('Final merged note failed numeric verification: '+str(result['not_found'])+' unmatched numbers; '+str(len(result['derivation_errors']))+' derivation errors')
+    return dict(status=result['status'],not_found=result['not_found'],quantities=result['quantities'],counts=result['counts'],
+        card_sha256=hashlib.sha256(text.encode('utf-8')).hexdigest(),source_sha256=result['source_sha256'])
 
 def run(args):
     vault=args.vault.resolve()
@@ -71,6 +83,7 @@ def run(args):
     else:text=stamp(text)
     fm,_=split(text);tier=value(fm,'card_tier','full');cover=value(fm,'card_cover');logic=value(fm,'card_logic_map')
     v2='card_tier' in fm
+    final_numbers=None
     if tier=='full' and not args.cover_only and (not cover or not logic):raise ValueError('Full card requires cover and logic map')
     if cover and value(fm,'ga_qc')=='failed':raise ValueError('Hard-failed cover cannot be installed')
     if v2:
@@ -78,6 +91,7 @@ def run(args):
         report=json.loads(args.number_report.read_text(encoding='utf-8'))
         if report.get('status')!='pass' or report.get('not_found')!=0:raise ValueError('Unresolved scientific numbers')
         if report.get('card_sha256')!=sha(args.note):raise ValueError('Numeric report is stale or lacks note hash')
+        final_numbers=verify_final_numbers(args,report,text)
         if cover:
             if not args.qc or not args.visual_brief:raise ValueError('Generated v2 cover requires QC and visual brief')
             raw_qc=json.loads(args.qc.read_text(encoding='utf-8'))
@@ -136,7 +150,7 @@ def run(args):
             if equal:continue
             if not args.update:raise FileExistsError('Different existing asset/source; explicit update required')
         plan.append((src,target))
-    if args.dry_run:return dict(status='ready',zotero_key=key,action='update' if existing else 'create',note=str(target_note),targets=[str(t) for _,t in plan],protected_merge=bool(existing))
+    if args.dry_run:return dict(status='ready',zotero_key=key,action='update' if existing else 'create',note=str(target_note),targets=[str(t) for _,t in plan],protected_merge=bool(existing),final_number_verification=final_numbers)
     uid=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'-'+uuid.uuid4().hex[:8]
     backup=guarded(vault/nf/'_backup'/uid,vault);temps=[];backups={};changed=[];created=[]
     try:
@@ -156,7 +170,7 @@ def run(args):
                         dest=tmp/f.relative_to(src);dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(f,dest)
                         if sha(f)!=sha(dest):raise RuntimeError('Merged source hash mismatch')
             else:copy_checked(src,tmp)
-        target_note.parent.mkdir(parents=True,exist_ok=True);ntmp=guarded(target_note.with_name(target_note.name+'.codex-tmp-'+uid),vault);ntmp.write_text(text,encoding='utf-8');temps.append(ntmp)
+        target_note.parent.mkdir(parents=True,exist_ok=True);ntmp=guarded(target_note.with_name(target_note.name+'.codex-tmp-'+uid),vault);ntmp.write_text(text,encoding='utf-8',newline='\n');temps.append(ntmp)
         operations=list(zip(temps[:-1],[t for _,t in plan]))+[(ntmp,target_note)]
         for tmp,target in operations:
             existed=target.exists()
@@ -171,7 +185,7 @@ def run(args):
             if p.exists():remove_owned(p,vault)
         if backups:
             (backup/'manifest.json').write_text(json.dumps({'zotero_key':key,'targets':[str(t.relative_to(vault)) for t in backups]},ensure_ascii=False,indent=2),encoding='utf-8')
-        return dict(status='updated' if existing else 'created',note=str(target_note),zotero_key=key,backup=str(backup) if backups else None,visual_render_verification='required_in_obsidian')
+        return dict(status='updated' if existing else 'created',note=str(target_note),zotero_key=key,backup=str(backup) if backups else None,visual_render_verification='required_in_obsidian',final_number_verification=final_numbers)
     except Exception:
         for t in reversed(changed):
             if t in backups:
@@ -185,7 +199,7 @@ def run(args):
 def parser():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--vault',type=Path,required=True)
-    for n in ['note','graphical-abstract','logic-map','mineru-directory','source-directory','assets-directory','number-report','qc','visual-brief','batch']:p.add_argument('--'+n,type=Path)
+    for n in ['note','graphical-abstract','logic-map','mineru-directory','source-directory','assets-directory','number-report','number-source','number-ledger','qc','visual-brief','batch']:p.add_argument('--'+n,type=Path)
     p.add_argument('--notes-folder',default='文献笔记');p.add_argument('--assets-folder',default='图片资源/literature_cards');p.add_argument('--sources-folder',default='sources/mineru');p.add_argument('--triage-sources-folder',default='sources/literature')
     for n in ['dry-run','update','skip-existing','cover-only']:p.add_argument('--'+n,action='store_true')
     return p
@@ -198,7 +212,7 @@ def main():
         except Exception as e:print(json.dumps({'status':'failed','error':str(e)},ensure_ascii=False));raise SystemExit(1)
         print(json.dumps(r,ensure_ascii=False,indent=2));return
     manifest=json.loads(a.batch.read_text(encoding='utf-8'));rows=manifest.get('cards',manifest) if isinstance(manifest,dict) else manifest
-    results=[];paths={'note','graphical_abstract','logic_map','mineru_directory','source_directory','assets_directory','number_report','qc','visual_brief'}
+    results=[];paths={'note','graphical_abstract','logic_map','mineru_directory','source_directory','assets_directory','number_report','number_source','number_ledger','qc','visual_brief'}
     for i,row in enumerate(rows):
         opts=vars(a).copy()
         for k,v in row.items():

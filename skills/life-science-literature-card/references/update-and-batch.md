@@ -15,7 +15,14 @@ python scripts/install_card_to_vault.py --vault $vaultPath --note $stagedNote `
 ```
 
 Repeat without `--dry-run` only within authorized installation scope. v2 numeric
-reports bind to the incoming note hash; QC binds to the selected image hash.
+reports bind to the incoming note hash, then the installer reruns verification
+against the final merged text, including protected user content, before any write.
+This also applies to dry-runs and cover-only updates. New reports record private
+`source_file` and optional `ledger_file` paths for that recheck. For older reports
+or moved staging files, pass `--number-source <source.md>` and, when using derived
+values, `--number-ledger <ledger.json>`. Do not guess which source or ledger to use.
+The returned `final_number_verification` includes counts and the exact UTF-8/LF
+note hash that will be written. QC binds to the selected image hash.
 Hard failures or stale reports prevent installation. A zero-not-found numeric
 report still needs scientific semantic review of endpoint/unit/model/direction.
 

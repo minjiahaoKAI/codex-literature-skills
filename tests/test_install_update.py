@@ -78,7 +78,7 @@ User edits outside generated region
         tx=self.note.read_text(encoding='utf-8').replace('[[图片资源/literature_cards/cover.png]]','').replace('[[图片资源/literature_cards/logic.svg]]','').replace(' ![[图片资源/literature_cards/cover.png|1000]]','')
         tx=tx.replace('note_type: literature-card','note_type: literature-card\ncard_tier: triage\nga_attempts: 0\nga_qc: not_generated\nimage_mode: disabled')
         self.note.write_text(tx,encoding='utf-8');report=self.base/'numbers.json';report.write_text(json.dumps({'status':'pass','not_found':0,'card_sha256':hashlib.sha256(self.note.read_bytes()).hexdigest()}))
-        self.args.number_report=report;self.args.graphical_abstract=None;self.args.logic_map=None
+        self.args.number_report=report;self.args.number_source=self.source/'paper.md';self.args.graphical_abstract=None;self.args.logic_map=None
         self.args.dry_run=True;plan=installer.run(self.args);self.assertEqual(plan['status'],'ready');self.assertFalse((self.v/'图片资源').exists())
         self.args.dry_run=False;installer.run(self.args);fm,body=split((self.v/'文献笔记/note.md').read_text(encoding='utf-8'))
         self.assertEqual(value(fm,'card_cover'),'');self.assertEqual(value(fm,'ga_qc'),'not_generated');self.assertNotIn('literature_card_placeholders',body)

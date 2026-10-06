@@ -138,6 +138,9 @@ Keep briefs, prompt, selected/raw attempts, QC, feedback/reference hashes and
 - Run `verify_card_numbers.py` on body, story, visual and helper JSON. Normalize
   thousands, CI notation and math markup; verified derivations require sourced
   operands and explicit arithmetic. Zero unresolved numbers before installation.
+  The installer rechecks the final merged text against the report's local source
+  and derivation ledger before writing; see `references/update-and-batch.md` for
+  older reports or moved staging paths.
   A numeric text match is a candidate; manually confirm endpoint/unit/model/group.
 
 ## Compatibility, batch and updates

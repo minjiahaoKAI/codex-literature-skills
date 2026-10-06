@@ -96,6 +96,10 @@ def main():
     artifacts=[(str(a.card),'md',a.card.read_text(encoding='utf-8'))]+[(str(x),'json',json.loads(x.read_text(encoding='utf-8'))) for x in paths]
     r=verify(a.source.read_text(encoding='utf-8'),artifacts,json.loads(a.ledger.read_text(encoding='utf-8')) if a.ledger else None)
     r['card_sha256']=hashlib.sha256(a.card.read_bytes()).hexdigest()
+    # Local paths allow the installer to recheck the merged text, including
+    # protected content. Reports are private staging artifacts, not repo files.
+    r['source_file']=str(a.source.resolve())
+    r['ledger_file']=str(a.ledger.resolve()) if a.ledger else None
     r['artifact_sha256']={str(x):hashlib.sha256(x.read_bytes()).hexdigest() for x in [a.card,*paths]}
     a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps({k:r[k] for k in ['status','quantities','not_found','counts']},ensure_ascii=False))
     if r['status']!='pass':raise SystemExit(1)
