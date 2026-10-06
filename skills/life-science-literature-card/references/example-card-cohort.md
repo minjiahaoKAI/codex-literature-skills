@@ -5,7 +5,7 @@ Manually curated public teaching example, based on Chen et al., DOI
 generated card, Zotero export or copy of the original paper. Generate a checked
 AI cover and source diagrams in the recipient's staging package before use.
 
-**封面位置：** 运行时生成的浅色青绿图表摘要；人群—耦合强度对照—具体结局，明确观察性证据。
+**封面位置：** 运行时生成的白灰主色图表摘要，以少量淡色区分模块；人群—耦合强度对照—具体结局，明确观察性证据。
 
 > [!literature-summary] 一句话
 > UKB中老年人的腕部活动量与设备温度昼夜联系更稳定，关联较低的二型糖尿病和心衰发病风险；耦合强度不等于两条节律同相。〔Results 2.2–2.3；Fig 4〕

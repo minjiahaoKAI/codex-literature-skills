@@ -1,7 +1,7 @@
 # Scientific visual vocabulary
 
 Every meaningful icon has a nearby label, refers to an actual measurement or
-explicit planned protocol, and uses flat teal/gray-blue lines. A method icon is
+explicit planned protocol, and uses flat gray or restrained branch-color lines. A method icon is
 not an actual dataset. Never generate quantitative plots for decorative use.
 
 | Concept | Schematic vocabulary and boundary |
@@ -21,7 +21,7 @@ not an actual dataset. Never generate quantitative plots for decorative use.
 | tDCS | Labeled electrode positions actually reported, no invented treatment success |
 | VR | Small labeled headset, no entertainment scene |
 | Mindfulness/psychotherapy | Neutral dialogue/condition icon, no behavioral cartoon |
-| Survival/risk ratio | Exact sourced HR/RR/OR label; scripted forest plot in body, no generated survival data |
+| Survival/risk ratio | Exact sourced HR/RR/OR and reported CI; compact summary allowed, no invented survival data |
 | Machine learning | Small model block with input/output labels and validation scope |
 | Cluster/trajectory | Labeled schematic groups/paths, no actual-looking unreported data curves |
 | Indirect calorimetry | Reported ventilated head hood or chamber; never substitute one for another |
@@ -31,5 +31,6 @@ not an actual dataset. Never generate quantitative plots for decorative use.
 Coupling links carry both variable names and a definition of stable relation;
 phase may differ. Null results use textual uncertainty and CI where sourced,
 never an equal sign or balance implying equivalence. Hypotheses are labeled and
-dashed only in the integration area. Analysis workflow arrows are distinct from
+dashed in one clearly labeled explanatory area. Association networks use dashed
+lines without arrowheads. Analysis workflow arrows are distinct from
 biological causal claims and must not connect parallel result modules.

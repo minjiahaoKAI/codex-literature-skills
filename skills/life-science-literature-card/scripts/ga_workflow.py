@@ -6,13 +6,14 @@ import shutil
 from datetime import datetime,timezone
 from pathlib import Path
 from validate_ga_briefs import qc_decision
+from _style import VERSION
 
 def now():return datetime.now(timezone.utc).isoformat()
 def elapsed(a,b):return round((datetime.fromisoformat(b)-datetime.fromisoformat(a)).total_seconds(),3)
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def start(key,tier,operation='create'):
     return dict(schema_version='2.0',key=key,card_tier=tier,operation=operation,started_at=now(),finished_at=None,
-        total_elapsed_seconds=None,ga_attempts=0,attempts=[],prompt_version='house-style-v1',feedback=None,style_references=[])
+        total_elapsed_seconds=None,ga_attempts=0,attempts=[],prompt_version=VERSION,feedback=None,style_references=[])
 def begin_attempt(log,prompt):
     n=len(log['attempts'])
     if log.get('finished_at'):raise ValueError('Operation already finished')

@@ -42,7 +42,7 @@ verdict_reason: ""
 key_result: ""
 date_added: YYYY-MM-DD
 card_tier: full
-ga_prompt_version: house-style-v1
+ga_prompt_version: house-style-v2
 ga_attempts: 1
 ga_qc: passed
 generation_elapsed_seconds: null

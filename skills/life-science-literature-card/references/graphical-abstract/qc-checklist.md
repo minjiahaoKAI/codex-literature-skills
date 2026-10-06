@@ -12,13 +12,20 @@ answered from the image at original size. Thumbnail checks only cover structure.
    planned labels to make an erroneous image pass. Independent OCR is optional;
    maker self-review is disclosed and is not a blind test.
 2. `numbers`: every visible quantitative fact is allowed, source-verified and in
-   the correct group/scale/denominator; no fabricated data chart.
+   the correct group/scale/denominator. Source-supported bars/interval summaries
+   are allowed; fabricated raw observations or unreported CI/error bars are not.
+   Confirm compatible scales and baseline, labels and qualifiers. P is not an
+   effect size; joint-model fit is not one predictor's independent contribution.
 3. `direction`: arrows/text match the actual result. Nonsignificance ≠ equality;
-   strength of coupling ≠ same phase.
+   strength of coupling ≠ same phase. A qualitative ordered-group graphic must
+   be labeled schematic, with equal-size icons; it must not imply measured
+   anatomy, quantitative gaps, longitudinal progression or future risk.
 4. `evidence_type`: distinguish primary/secondary/exploratory, observation,
    randomization, MR assumptions, prediction and hypothetical mediation.
 5. `association_as_cause`: no causal claim/connector for an observational
-   association; no arrows between parallel evidence rows.
+   association; no arrows between parallel evidence rows. Association networks
+   use dashed lines without arrowheads; genuine analytical workflow arrows need
+   an exact planned label explaining that they are analysis steps.
 6. `unmeasured_organs`: inventory every organ/tissue/data icon against sources;
    no unmeasured organs, even within a hypothetical illustration.
 7. `cartoon_elements`: expressive characters, life/action scenes and semantic-free
@@ -38,6 +45,13 @@ method, coordinates and uncertainty; these values do **not** determine acceptanc
 An obvious oversized title or large empty region should be corrected in the brief
 before generation; afterwards record it for the next card, not another automatic
 generation. Record flat-rendering consistency, palette and discovery focal area.
+The default is white/neutral-gray with small restrained branch accents, charcoal
+prose and readable information. Check that accent colors distinguish meaningful
+modules without implying good/bad or returning to large tinted boxes.
+Record approximate AI-rendered bar lengths and measurement uncertainty; minor
+geometry deviations are soft, while a materially misleading magnitude/scale or
+reversed comparison fails the numeric/direction gate. Exact source labels remain
+authoritative. Do not claim publication-grade plot precision from a raster.
 
 Original-size story questions: who/data; key concept; specific variables and
 directions; specific endpoints; association or causal evidence? An inability to

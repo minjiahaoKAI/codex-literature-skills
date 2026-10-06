@@ -82,8 +82,10 @@ Triage defaults to no cover; the wall displays shared study-type placeholders.
 An explicit triage-cover request enables this workflow; upgrading to full creates
 a checked paper-specific cover while preserving reading and project state.
 Always use the built-in image-generation tool for a requested cover. No script
-overlay of its title/footer. Approved default: teal `house-style-v1`, Chinese
-labels, landscape 16:10. The gray-blue test variant is retired.
+overlay of its title/footer. Approved default: white/neutral-gray `house-style-v2`,
+Chinese labels, landscape 16:10. Use restrained accents to distinguish branches
+and source-supported result graphics with concise text. Choose layout per paper;
+existing covers retain their recorded style and are not automatically regenerated.
 
 1. **Story:** save `story_brief.json`, with key concept, finding shape, specific
    endpoints, sources, allowed numbers and must_not_show. Complex full papers
@@ -91,8 +93,11 @@ labels, landscape 16:10. The gray-blue test variant is retired.
 2. **Visual:** save `visual_brief.json`: exact label IDs/text/roles, panel positions,
    meaningful labeled icons, named number references and evidence-aware links.
    Center organization follows finding shape and complexity, not paper type alone.
-   Complex central rows are parallel, without row-to-row arrows. Only one sourced
-   integration path; hypothetical links dashed. Draw no unmeasured organ/tissue.
+   Parallel result modules have no row-to-row arrows. Genuine analytical stages
+   may connect as workflow; association lines are dashed without arrowheads.
+   Use at most one sourced explanatory path; hypothetical links dashed and labeled.
+   Match quantitative/qualitative graphics to the available evidence; do not
+   invent magnitudes, intervals, progression or anatomy. Draw no unmeasured tissue.
 3. **Prompt/tool:** read `_ga_feedback.md` and inspect any available ignored
    `references/graphical-abstract/style-refs/` files. Use new references from the
    next card, learning style only. Run `build_ga_prompt.py` to insert the fixed
@@ -163,7 +168,7 @@ No restart/close of a user's active session without permission.
 
 ## Cover-only regeneration
 
-Read saved briefs, current full/abstract scope, feedback and latest v1 style.
+Read saved briefs, current full/abstract scope, feedback and latest house style.
 Validate facts/labels without re-reading unrelated papers or rewriting the body.
 Create a fresh operation log (`operation: cover_only`), generate/check within the
 same attempt budget, stage a versioned PNG and GA records, then dry-run

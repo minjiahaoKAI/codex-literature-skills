@@ -1,8 +1,9 @@
-import importlib.util,sys,shutil,uuid,unittest
+import importlib.util,sys,shutil,uuid,unittest,json
 from pathlib import Path
 S=Path(__file__).resolve().parents[1]/'skills/life-science-literature-card/scripts'
 sys.path.insert(0,str(S))
 import ga_workflow as workflow
+import build_ga_prompt as prompt_builder
 from validate_ga_briefs import qc_decision,HARD_CHECKS
 
 class CoverBudgetTests(unittest.TestCase):
@@ -38,4 +39,20 @@ class CoverBudgetTests(unittest.TestCase):
         self.p.write_text('corrective prompt');workflow.begin_attempt(l,self.p)
         self.assertEqual(first.read_text(),'prompt')
         self.assertNotEqual(l['attempts'][0]['prompt_sha256'],l['attempts'][1]['prompt_sha256'])
+class PromptRelationTests(unittest.TestCase):
+    def test_association_does_not_receive_a_directional_connector(self):
+        example=S.parent/'references/graphical-abstract/examples/cohort'
+        story=json.loads((example/'story_brief.json').read_text(encoding='utf-8'))
+        visual=json.loads((example/'visual_brief.json').read_text(encoding='utf-8'))
+        source=list(story['sources'])[0]
+        left,right=visual['labels'][0]['id'],visual['labels'][1]['id']
+        visual['connectors']=[{'from':left,'to':right,'semantic':'association','style':'dashed','source':[source]}]
+        relation=prompt_builder.build(story,visual).split('Allowed connectors only:\n',1)[1].splitlines()[0]
+        self.assertNotIn('→',relation)
+        self.assertIn('WITHOUT arrowheads',relation)
+        visual['connectors'][0].update(semantic='workflow',style='solid')
+        relation=prompt_builder.build(story,visual).split('Allowed connectors only:\n',1)[1].splitlines()[0]
+        self.assertIn('→',relation)
+        self.assertIn('workflow, solid',relation)
+
 if __name__=='__main__':unittest.main()

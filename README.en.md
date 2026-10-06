@@ -19,7 +19,7 @@ The package does not include Zotero data, an Obsidian vault, the MinerU CLI, API
 - Upgrades preserve reading/annotation state and protected user notes.
 - Cover-only regeneration reuses saved briefs and changes cover metadata/assets.
 
-Default covers use the approved pale teal journal style with Chinese labels. Text, numbers, scientific direction/evidence, unmeasured tissues and cartoon elements are hard gates. Font/area targets are soft references. Usually one generation, at most two; only a documented hard failure permits a third. Every card logs elapsed time and call count. Sourced SVGs share the palette. The installer supports backed-up updates, identity-based skipping and independent batch failures; legacy cards work without migration.
+Default covers use a white/neutral-gray journal style with restrained branch accents and Chinese labels. Choose layout from the paper's story and pair source-checked statistics or finding schematics with concise text; there is no universal arrangement. Text, numbers, scientific direction/evidence, unmeasured tissues and cartoon elements are hard gates. Font/area targets are soft references. Usually one generation, at most two; only a documented hard failure permits a third. Every card logs elapsed time and call count. Sourced SVGs share the palette. The installer supports backed-up updates, identity-based skipping and independent batch failures; legacy cards work without migration.
 
 See the [skill](skills/life-science-literature-card/SKILL.md), [installation/update guide](skills/life-science-literature-card/references/update-and-batch.md), and [v2 review](docs/v2-review.md). Private generated cards/covers and original paper images stay outside Git.
 
